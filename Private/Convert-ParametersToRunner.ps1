@@ -18,9 +18,10 @@ function Convert-ParametersToRunner {
 
     PROCESS {
 
-        foreach ($C1 in $Command) {
+        foreach ($C1 in $Command) { # TODO: Recheck logic for more than one command, check also END block
+
             Write-Verbose -Message "Processing command $C1"
-            $Params = Get-Parameters $C1 | Select -Expand Name -Unique
+            $Params = Get-Parameter $C1 | Select -Expand Name -Unique
 
             # generate code to read parameters
 
@@ -31,35 +32,41 @@ function Convert-ParametersToRunner {
             #     $Response += "`$$P1 = `$requestBody.$P1"  # output like $url = $req_query_url
             # }
 
-            $Response += '', '# POST method: $req', '$requestBody = Get-Content $req -Raw'
-            $Response += "`$requestBody -split '&' | % {","  `$v = `$_ -split '='","  Set-Variable -Name `$v[0] -Value `$v[1]","}"
+            $Response += '', '# POST method: $req', '$requestContent = Get-Content $req -Raw'
+            # try to properly parse json response
+            $Response += 'try {','  $requestBody = $requestContent | ConvertFrom-Json','  $Failed = $false'
+            $Response += "  `$InvokeCommand = `$requestBody.InvokeCommand" # reads hidden parameter
+            foreach ($P1 in $Params) {$Response += "  `$$P1 = `$requestBody.$P1"}
+            # if fails, try to parse URL encoded params
+            $Response += '} catch {$Failed = $true}'
+            $Response += 'if ($Failed) {', "  `$requestContent -split '&' | % {","    `$v = `$_ -split '='","    Set-Variable -Name `$v[0] -Value `$v[1]",'  }','}'
+            # FIXME: Above not good for two reasons: 1) any name gets converted to var, 2) its in catch, but it can fail
+
+            # generate code to open default page
+            $Response += '','# prepare output, either default web-page or invoke command'
+            $Response += 'if (!$InvokeCommand) {',"  'show default web page'", '  cd $EXECUTION_CONTEXT_FUNCTIONDIRECTORY', '  $Output = Get-Content .\index.html -Raw'
+            # TODO: Evaluate if page should be called index.html, or index.CommandName.html
+
+            # generate code to invoke command in try catch block, using parameters splatting
+            $Response += '} else {',"  'invoke command'", '  try {'
+            $Response += "    `$ParamsHash = @{}"
+            foreach ($P1 in $Params) {
+                $Response += "    if (`$$P1) {`$ParamsHash.Add('$P1',`$$P1)}"
+            }
+            $Response += "    `$Output = $C1 @ParamsHash | Out-String"
+            $Response += '  } catch {','    $Output = $_','  }' # FIXME: Not really working, error crashes web app
+            # TODO: Add some differentiation of output, i.e. error to be red
+
+            $Response += "  `$Output = '<pre>' + `$Output + '</pre>'","  `$Output = `$Output -replace `"``n`",'</br>'",'}'
+            
+            
+            # convert output to HTML and parse it back
+            $Response += '', '# parse and send back output'
+            $Response += "`$Output2 = [pscustomobject]@{Status = 200; Body = '';  Headers = @{}}","`$Output2.Headers.Add('content-type','text/html')"
+            $Response += "`$Output2.Body = `$Output -replace '`"',`"'`""
+
+            $Response += '','Out-File -Encoding utf8 -FilePath $res -inputObject ($Output2 | ConvertTo-JSON)'
         }
-
-        # generate code to open default page
-        $Response += '','# prepare output, either default web-page or invoke command'
-        $Response += 'if (!$InvokeCommand) {',"  'show default web page'", '  cd $EXECUTION_CONTEXT_FUNCTIONDIRECTORY', '  $Output = Get-Content .\index.html -Raw'
-        # TODO: Evaluate if page should be called index.html, or index.CommandName.html
-
-        # generate code to invoke command in try catch block, using parameters splatting
-        $Response += '} else {',"  'invoke command'", '  try {'
-        $Response += "    `$ParamsHash = @{}"
-        foreach ($P1 in $Params) {
-            $Response += "    if (`$$P1) {`$ParamsHash.Add('$P1',`$$P1)}"
-        }
-        $Response += "    `$Output = $C1 @ParamsHash | Out-String"
-        $Response += '  } catch {','    $Output = $_','  }' # FIXME: Not really working, error crashes web app
-        # TODO: Add some differentiation of output, i.e. error to be red
-
-        $Response += "  `$Output = '<pre>' + `$Output + '</pre>'","  `$Output = `$Output -replace `"``n`",'</br>'",'}'
-        
-        
-        # convert output to HTML and parse it back
-        $Response += '', '# parse and send back output'
-        $Response += "`$Output2 = [pscustomobject]@{Status = 200; Body = '';  Headers = @{}}","`$Output2.Headers.Add('content-type','text/html')"
-        $Response += "`$Output2.Body = `$Output -replace '`"',`"'`""
-
-        $Response += 'Out-File -Encoding utf8 -FilePath $res -inputObject $Output2'
-
     }
 
     END {

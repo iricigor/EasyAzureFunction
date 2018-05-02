@@ -22,14 +22,14 @@ function Convert-ParametersToHTML () {
             $Response += '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>'
             $Response += '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>'
         }
-        $Response += '</head>','<body>'
+        $Response += '</head>','','<body>'
         if ($Bootstrap) {$Response += '<div class="container">'}
     }
 
     PROCESS {
         foreach ($C1 in $Command) {
             Write-Verbose -Message "Processing command $C1"
-            $Params = Get-Parameters $C1 | Sort ParameterSet
+            $Params = Get-Parameter $C1 | Sort ParameterSet
             $ShowSets = ($Params | Select -Unique ParameterSet).Count -gt 1
             $PrevParamSet = ''
             $Response += "<form action='' method='post'>","<h1>$C1</h1>","<hr>"
@@ -63,10 +63,15 @@ function Convert-ParametersToHTML () {
                     # Bootstrap template 
                     
                     if ($Type -eq 'SwitchParameter') {
-                        $Response += "<label class='checkbox-inline'><input type='checkbox' name=$Name value=1>$Name</label>"
+                        $Response += "<div class='form-check'>"
+                        $Response += "  <input type='checkbox' name=$Name value=1>"
+                        $Response += "  <label class='form-check-label'>$Name</label>"
+                        $Response += "</div>"
                     } else {
-                        $Response += "<div class='input-group'>","<span class='input-group-addon'>$Name</span>"
-                        $Response += "<input type='text' class='form-control' name='$Name' placeholder='$Type'>","</div>"
+                        $Response += "<div class='input-group'>"
+                        $Response += "  <span class='input-group-addon'>$Name</span>"
+                        $Response += "  <input type='text' class='form-control' name='$Name' placeholder='$Type'>"
+                        $Response += "</div>"
                     }
                 }
                 # TODO: IF PSCredential, then build credential?
@@ -75,7 +80,7 @@ function Convert-ParametersToHTML () {
             if (!$Bootstrap) {
                 $Response += "<input type='submit' value='Submit!'>","</form>"
             } else {
-                $Response += "<p></p><input type=submit value='Submit!' class='form-control'></div>"
+                $Response += "<p></p><input type=submit value='  Run $C1  ' class='btn btn-primary btn-block'></div>"
             }
             
         }

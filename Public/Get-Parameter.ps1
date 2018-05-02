@@ -22,7 +22,7 @@ function Get-Parameter () {
 
                 $Type = $PObj.ParameterType 
                 if ($Type.BaseType -eq [System.Enum]) {$Values = [System.Enum]::GetNames($Type)} else {$Values = @()}
-                # TODO: Add list of possible values, not tested and not used code above
+                # TODO: Add list of possible values (i.e. ValidateSet), not tested and not used code above
 
                 foreach ($ParamSetName in $PObj.ParameterSets.Keys) {
                     New-Object PSObject -Property @{
