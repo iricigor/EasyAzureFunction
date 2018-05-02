@@ -1,6 +1,9 @@
 function Convert-ParametersToHTML () {
     
+    # Used to generate index.html file which is presented if Azure Function is called without default parameter
+
     # Example: Get-Parameters Get-Location | Convert-ParametersToHTML -Boot -Invoke
+    
     param (
         
         [string[]]$Command,

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<form action='' method='post' enctype='application/json'>
+<h1>Get-Command</h1>
+<hr>
+<input type='hidden' name='InvokeCommand' value='1'>
+<h2>__AllParameterSets</h2>
+<div class='input-group'>
+<span class='input-group-addon'>ArgumentList</span>
+<input type='text' class='form-control' name='ArgumentList' placeholder='Object[]'>
+</div>
+<label class='checkbox-inline'><input type='checkbox' name=ShowCommandInfo value=1>ShowCommandInfo</label>
+<label class='checkbox-inline'><input type='checkbox' name=Syntax value=1>Syntax</label>
+<div class='input-group'>
+<span class='input-group-addon'>ParameterName</span>
+<input type='text' class='form-control' name='ParameterName' placeholder='String[]'>
+</div>
+<label class='checkbox-inline'><input type='checkbox' name=ListImported value=1>ListImported</label>
+<label class='checkbox-inline'><input type='checkbox' name=All value=1>All</label>
+<div class='input-group'>
+<span class='input-group-addon'>ParameterType</span>
+<input type='text' class='form-control' name='ParameterType' placeholder='PSTypeName[]'>
+</div>
+<div class='input-group'>
+<span class='input-group-addon'>Module</span>
+<input type='text' class='form-control' name='Module' placeholder='String[]'>
+</div>
+<div class='input-group'>
+<span class='input-group-addon'>FullyQualifiedModule</span>
+<input type='text' class='form-control' name='FullyQualifiedModule' placeholder='ModuleSpecification[]'>
+</div>
+<div class='input-group'>
+<span class='input-group-addon'>TotalCount</span>
+<input type='text' class='form-control' name='TotalCount' placeholder='Int32'>
+</div>
+<h2>AllCommandSet</h2>
+<div class='input-group'>
+<span class='input-group-addon'>Name</span>
+<input type='text' class='form-control' name='Name' placeholder='String[]'>
+</div>
+<div class='input-group'>
+<span class='input-group-addon'>CommandType</span>
+<input type='text' class='form-control' name='CommandType' placeholder='CommandTypes'>
+</div>
+<h2>CmdletSet</h2>
+<div class='input-group'>
+<span class='input-group-addon'>Noun</span>
+<input type='text' class='form-control' name='Noun' placeholder='String[]'>
+</div>
+<div class='input-group'>
+<span class='input-group-addon'>Verb</span>
+<input type='text' class='form-control' name='Verb' placeholder='String[]'>
+</div>
+<p></p><input type=submit value='Submit!' class='form-control'></div>
+</body>
+</html>

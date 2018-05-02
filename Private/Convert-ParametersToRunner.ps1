@@ -1,5 +1,7 @@
 function Convert-ParametersToRunner {
     
+    # Used to generate run.ps1 file which is executed in Azure Function
+
     param (
         
         [string[]]$Command,
@@ -21,11 +23,16 @@ function Convert-ParametersToRunner {
             $Params = Get-Parameters $C1 | Select -Expand Name -Unique
 
             # generate code to read parameters
-            $Response += '', '# POST method: $req', '$requestBody = Get-Content $req -Raw | ConvertFrom-Json'
-            $Response += "`$InvokeCommand = `$requestBody.InvokeCommand" # reads hidden parameter
-            foreach ($P1 in $Params) {
-                $Response += "`$$P1 = `$requestBody.$P1"  # output like $url = $req_query_url
-            }
+
+            # According to documentation / template POST should give me json formatted parameters, but I got them HTML encoded like Igor=1&Joey=2
+            # $Response += '', '# POST method: $req', '$requestBody = Get-Content $req -Raw | ConvertFrom-Json'
+            # $Response += "`$InvokeCommand = `$requestBody.InvokeCommand" # reads hidden parameter
+            # foreach ($P1 in $Params) {
+            #     $Response += "`$$P1 = `$requestBody.$P1"  # output like $url = $req_query_url
+            # }
+
+            $Response += '', '# POST method: $req', '$requestBody = Get-Content $req -Raw'
+            $Response += "`$requestBody -split '&' | % {","  `$v = `$_ -split '='","  Set-Variable -Name `$v[0] -Value `$v[1]","}"
         }
 
         # generate code to open default page
@@ -40,12 +47,17 @@ function Convert-ParametersToRunner {
             $Response += "    if (`$$P1) {`$ParamsHash.Add('$P1',`$$P1)}"
         }
         $Response += "    `$Output = $C1 @ParamsHash | Out-String"
-        $Response += '  } catch {','    $Output = $_','  }','}'
+        $Response += '  } catch {','    $Output = $_','  }' # FIXME: Not really working, error crashes web app
         # TODO: Add some differentiation of output, i.e. error to be red
 
+        $Response += "  `$Output = '<pre>' + `$Output + '</pre>'","  `$Output = `$Output -replace `"``n`",'</br>'",'}'
+        
+        
         # convert output to HTML and parse it back
         $Response += '', '# parse and send back output'
-        $Response += "`$Output2 = [string]::Format(`'{{ `"Status`": 200, `"Body`": `"{0}`", `"Headers`": {{`"content-type`": `"text/html`" }} }}', `$Output -replace '`"',`"'`")"
+        $Response += "`$Output2 = [pscustomobject]@{Status = 200; Body = '';  Headers = @{}}","`$Output2.Headers.Add('content-type','text/html')"
+        $Response += "`$Output2.Body = `$Output -replace '`"',`"'`""
+
         $Response += 'Out-File -Encoding utf8 -FilePath $res -inputObject $Output2'
 
     }
