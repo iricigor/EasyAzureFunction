@@ -103,5 +103,3 @@ function Convert-ParametersToHTML () {
         }
     }
 }
-
-Set-Alias -Name cvpth -Value Convert-ParametersToHTML
