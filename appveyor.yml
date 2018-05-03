@@ -4,9 +4,10 @@ init:
 install:
     - ps: |
         # Here we install platyPS to the worker machine form the gallery
-        # Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+        Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
         # Install-Module platyPS -Force
         # Import-Module platyPS
+        Install-Module Pester -RequiredVersion 4.0.0 -Scope CurrentUser
         Import-Module Pester -MinimumVersion 4.0.0
 
 build_script:
