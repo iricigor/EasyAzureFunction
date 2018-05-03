@@ -40,8 +40,8 @@ All of these links will open Azure Functions web page, so just click it and see 
 ## ToDo list
 
 - [ ] Add Pester tests
-- [ ] Add documentation, via PlatyPS
-- [ ] Add primary function to call two private ones
+- [x] Add documentation, via PlatyPS
+- [x] Add primary function to call two private ones
 - [ ] Add psd1
 - [ ] Add CI/CD pipeline, publish to PSGallery
 - [ ] Add support for script with parameters and script with function(s) inside
