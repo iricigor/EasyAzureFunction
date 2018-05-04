@@ -1,7 +1,7 @@
 
-[![Build status](https://ci.appveyor.com/api/projects/status/kkjs02jl860sx7ra?svg=true)](https://ci.appveyor.com/project/iricigor/easyazurefunction)
-
 # EasyAzureFunction
+
+[![Build status](https://ci.appveyor.com/api/projects/status/kkjs02jl860sx7ra?svg=true)](https://ci.appveyor.com/project/iricigor/easyazurefunction)
 
 This PowerShell module helps you to create local files for easy start with Azure Functions.
 See **How to Use** section below for a quick start.
@@ -10,9 +10,9 @@ Note: ***Work is still in progress. Not all examples work as described!***
 
 ## Azure functions
 
-Azure Functions is a solution for easily running small pieces of code, or "functions," in the cloud.
+Azure Functions is a solution for easily running small pieces of code, or "functions" in the cloud.
 See Microsoft introduction [here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview)
-and PowerShell specific introduction by Steve Lee [here](https://blogs.msdn.microsoft.com/powershell/2017/02/24/using-powershell-modules-in-azure-functions/)
+and PowerShell specific introduction by Steve Lee [here](https://blogs.msdn.microsoft.com/powershell/2017/02/24/using-powershell-modules-in-azure-functions/).
 
 ## How to install
 
@@ -38,7 +38,9 @@ Import-Module .\EasyAzureFunction.psd1 -Force
 
 ## How to use
 
-In order to fully use this module, you need have Azure function and do two simple steps
+In order to fully use this module, you need have Azure function and do two simple steps.
+
+If you already have AzF, you just run ```New-AzFC <MyCommand>``` and then upload generated files to your function! Simple as that!
 
 ### Create Azure function
 
@@ -50,7 +52,7 @@ Once your App is deployed, find it under 'Function Apps' service group.
 New function can be created by clicking on '+' next to 'Functions' drop down in the middle of the screen.
 
 In order to use it with PowerShell, select 'Custom function' and then select 'Experimental Languages Support'
-Now you can easily create 'HTTP trigger' / PowerShell function in couple of clicks. 
+Now you can easily create 'HTTP trigger' / PowerShell function in couple of clicks.
 For this example, set Authorization level to 'Anonymous'.
 
 ### 1. Run command and generate files locally
@@ -93,7 +95,7 @@ All of these links will open Azure Functions web page, so just click it and see 
 - [x] Add psd1
 - [ ] Add CI/CD pipeline, publish to PSGallery
 - [x] Add build badge
-- [ ] Add go back link at the end of results page
+- [x] Add go back link at the end of results page
 
 ### Do it later
 

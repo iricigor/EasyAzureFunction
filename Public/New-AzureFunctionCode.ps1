@@ -22,7 +22,15 @@ function New-AzureFunctionCode {
             # prepare folder
             if ($Command.Count -gt 1) {$P1 = Join-Path $Path $C1} 
             else {$P1 = $Path}
-            if (!(Test-Path $P1)) {New-Item $P1 -ItemType Directory -Force}
+            if (!(Test-Path $P1)) {New-Item $P1 -ItemType Directory -Force | Out-Null}
+
+            # check for existence of command
+            if (!(Get-Command $C1)) {
+                Write-Error "Cannot find command $C1"
+                continue
+            } else {
+                $C1 = (Get-Command $C1).Name # setup proper capitalization
+            }
 
             # generate files
             Convert-ParametersToHTML -Command $C1 -Bootstrap | Out-File (Join-Path $P1 'index.html') -Force -Encoding utf8

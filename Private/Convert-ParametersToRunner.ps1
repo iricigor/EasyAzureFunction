@@ -45,7 +45,7 @@ function Convert-ParametersToRunner {
             $Response += '} catch {$Failed = $true}'
             $Response += 'if ($Failed) {', '"Params (URLEncoded): $requestContent"' # logging to AzF console
             $Response += "  `$requestContent -split '&' | % {","    `$v = `$_ -split '='"
-            $Response += '    if ($V[1]) {Set-Variable -Name `$v[0] -Value `$v[1]','  }','}'
+            $Response += '    if ($v[1]) {Set-Variable -Name $v[0] -Value $v[1]}','  }','}'
             # FIXME: Above not good because any name gets converted to var
 
             # generate code to open default page
@@ -69,8 +69,9 @@ function Convert-ParametersToRunner {
             $Response += '    if ($Output) {$Color = ''white''}','else {$Color = ''gray''; $Output = ''Command run successfully, but it returned no output''}'
             $Response += '  } catch {','    $Output = $_','    $Color = ''red''','  }' # TODO: Sometimes not working, error crashes web app
 
-            $Response += '  $Head = ''<head><style>body {background-color: #012456; color: $Color;}</style></head>'''
-            $Response += "  `$Output = `$Head + '<pre>' + `$Output + '</pre><a href=`"javascript:history.back()`" style=`"color:yellow;`">Go Back</a>'"
+            $Response += '  $Head = "<head><style>body {background-color: #012456; color: $Color;}</style></head>"'
+            $Response += '  $Back = ''<p><a href="javascript:history.back()" style="color:yellow;">Go Back</a></p>'''
+            $Response += "  `$Output = `$Head + '<pre>' + `$Output + '</pre>' + `$Back"
             $Response += "  `$Output = `$Output -replace `"``n`",'</br>'",'}'
                         
             # convert output to HTML and parse it back

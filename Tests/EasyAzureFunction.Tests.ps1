@@ -40,7 +40,7 @@ Describe 'Proper Declarations' {
 
    It 'Checks for Aliases' {
        @(Get-Command -Module $ModuleName -CommandType Alias).Count | Should -Be 1 -Because 'We should have one alias defined'
-       Get-Alias New-AFC -ea 0 | Should -Not -Be $null
+       Get-Alias New-AzFC -ea 0 | Should -Not -Be $null
        Get-Alias NenExistingAlias -ea 0 | Should -Be $null
    }
 }
