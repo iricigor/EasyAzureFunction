@@ -1,3 +1,6 @@
+
+[![Build status](https://ci.appveyor.com/api/projects/status/kkjs02jl860sx7ra?svg=true)](https://ci.appveyor.com/project/iricigor/easyazurefunction)
+
 # EasyAzureFunction
 
 This PowerShell module helps you to create local files for easy start with Azure Functions.
@@ -48,7 +51,7 @@ New function can be created by clicking on '+' next to 'Functions' drop down in 
 
 In order to use it with PowerShell, select 'Custom function' and then select 'Experimental Languages Support'
 Now you can easily create 'HTTP trigger' / PowerShell function in couple of clicks. 
-For this example, leave Authorization level to 'Anonymous'.
+For this example, set Authorization level to 'Anonymous'.
 
 ### 1. Run command and generate files locally
 
@@ -56,8 +59,8 @@ For this example, leave Authorization level to 'Anonymous'.
  New-AzureFunctionCode -Command Get-Process -Path C:\GP
 ```
 
-You will get two files in folder: run.ps1 and index.html.
 You can select any PowerShell command instead of Get-Process.
+You will get two files in folder: run.ps1 and index.html.
 
 ### 2. Copy generated files to your Azure function
 
