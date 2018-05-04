@@ -80,17 +80,20 @@ function Convert-ParametersToHTML () {
             }
             # Add submit button
             if (!$Bootstrap) {
-                $Response += "<input type='submit' value='Submit!'>","</form>"
+                $Response += "<input type='submit' value='Submit!'>","</form>",'<p></p>'
+                $Response += '<div>Created with <a href="https://github.com/iricigor/EasyAzureFunction">EasyAzureFunction module</a>'
+                $Response += ' by <a href="mailto:iricigor@gmail.com?Subject=EasyAzureFunction">Igor Iric</a></div>'
             } else {
-                $Response += "<p></p><input type=submit value='  Run $C1  ' class='btn btn-primary btn-block py-3'></div>"
+                $Response += "<p></p><input type=submit value='  Run $C1  ' class='btn btn-primary btn-block py-3'>","</form>",'<p></p>'
+                $Response += '<div class="bg-info">Created with EasyAzureFunction module <a href="https://github.com/iricigor/EasyAzureFunction"><span class="glyphicon glyphicon-link"></span></a>'
+                $Response += ' by Igor Iric <a href="mailto:iricigor@gmail.com?Subject=EasyAzureFunction"><span class="glyphicon glyphicon-envelope"></span></a></div>'
             }
             
         }
     }
 
     END {
-        # TODO: Add HTML finishing
-        $Response += '</body>','</html>'
+        $Response += '</div>','</body>','</html>'
 
         if ($Invoke) {
             $TempFile = [System.IO.Path]::GetTempFileName() + '.html'
