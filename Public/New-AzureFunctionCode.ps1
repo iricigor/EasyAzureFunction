@@ -25,8 +25,8 @@ function New-AzureFunctionCode {
             if (!(Test-Path $P1)) {New-Item $P1 -ItemType Directory -Force}
 
             # generate files
-            Convert-ParametersToHTML -Command $C1 -Bootstrap | Out-File (Join-Path $P1 'index.html') -Force
-            Convert-ParametersToRunner -Command $C1 | Out-File (Join-Path $P1 'run.ps1') -Force
+            Convert-ParametersToHTML -Command $C1 -Bootstrap | Out-File (Join-Path $P1 'index.html') -Force -Encoding utf8
+            Convert-ParametersToRunner -Command $C1 | Out-File (Join-Path $P1 'run.ps1') -Force -Encoding utf8
         }
     }
 
@@ -37,4 +37,4 @@ function New-AzureFunctionCode {
     }
 }
 
-Set-Alias -Name New-AFC -Value New-AzureFunctionCode
+Set-Alias -Name New-AzFC -Value New-AzureFunctionCode
