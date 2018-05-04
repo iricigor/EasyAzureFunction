@@ -51,7 +51,6 @@ function Convert-ParametersToRunner {
             # generate code to open default page
             $Response += '','# prepare output, either default web-page or invoke command'
             $Response += "if (!`$$Prefix`InvokeCommand) {","  'show default web page'", '  cd $EXECUTION_CONTEXT_FUNCTIONDIRECTORY', '  $Output = Get-Content .\index.html -Raw'
-            # TODO: Evaluate if page should be called index.html, or index.CommandName.html
 
             # generate code to invoke command in try catch block, using parameters splatting
             $Response += '} else {',"  'invoke command'", '  try {'
@@ -62,19 +61,17 @@ function Convert-ParametersToRunner {
                     $Response += "    if (`$$Prefix$N) {`$ParamsHash.Add('$N',`$True)}"
                 } else {
                     $Response += "    if (`$$Prefix$N) {`$ParamsHash.Add('$N',`$$Prefix$N)}"
-                }
-                
-                # TODO: Handle switches, arrays, etc.
+                }                
+                # TODO: Handle arrays, etc.
             }
             $Response += '    "Params: $($ParamsHash.Keys -join `",`")"' # logging to AzF console
             $Response += "    `$Output = $C1 @ParamsHash | Out-String"
-            # TODO: Add control if no output
-            $Response += '  } catch {','    $Output = $_','  }' # FIXME: Not really working, error crashes web app
-            # TODO: Add some differentiation of output, i.e. error to be red
+            $Response +- '    if ($Output) {$Color = ''white''}','else {$Color = ''gray''; $Output = ''Command run successfully, but it returned no output''}'
+            $Response += '  } catch {','    $Output = $_','    $Color = ''red''','  }' # TODO: Sometimes not working, error crashes web app
 
-            $Response += "  `$Output = '<pre>' + `$Output + '</pre>'","  `$Output = `$Output -replace `"``n`",'</br>'",'}'
-            
-            
+            $Response += '  $Head = ''<head><style>body {background-color: #012456; color: $Color;}</style></head>'''
+            $Response += "  `$Output = `$Head + '<pre>' + `$Output + '</pre>'","  `$Output = `$Output -replace `"``n`",'</br>'",'}'
+                        
             # convert output to HTML and parse it back
             $Response += '', '# parse and send back output'
             $Response += "`$Output2 = [PSCustomObject]@{Status = 200; Body = '';  Headers = @{}}","`$Output2.Headers.Add('content-type','text/html')"

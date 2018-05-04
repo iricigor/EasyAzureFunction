@@ -81,7 +81,7 @@ All of these links will open Azure Functions web page, so just click it and see 
 
 ## ToDo list
 
-- [ ] Add Pester tests
+- [x] Add Pester tests
 - [x] Add documentation, via PlatyPS
 - [x] Add primary function to call two private ones
 - [x] Add psd1
@@ -90,6 +90,9 @@ All of these links will open Azure Functions web page, so just click it and see 
 - [ ] Add more tasks here, or in the issues (with link from here)
 - [ ] Test with PowerShell core
 - [ ] Unify argument names (Name vs CommandName vs Command), add support for pipeline from Get-Command
+- [x] Add build badge
+- [ ] Add go back link at the end of results page
+- [ ] Verify if command exists on remote system before running it
 
 ## Thanks list
 

@@ -5,7 +5,7 @@ function New-AzureFunctionCode {
 
     param (
         [string[]]$Command,
-        [string]$Path = $env:TEMP,
+        [string]$Path = $env:TEMP, # TODO: This might not be compatible with PSCore
         [switch]$Invoke
 
     )
@@ -13,7 +13,7 @@ function New-AzureFunctionCode {
     # TODO: Add support for extra parameters, like bootstrap
 
     BEGIN {
-        # TODO: If path not existing create it
+
     }
 
     PROCESS {
