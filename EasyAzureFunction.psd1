@@ -30,7 +30,7 @@ CompanyName = 'Microsoft'
 Copyright = '(c) 2018 Microsoft. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'This PowerShell module helps you to create local files for easy start with Azure Functions. See GitHub repository (Project site) for more information.'
 
 # Minimum version of the Windows PowerShell engine required by this module
 # PowerShellVersion = ''

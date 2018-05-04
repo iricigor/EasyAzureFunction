@@ -6,8 +6,6 @@
 This PowerShell module helps you to create local files for easy start with Azure Functions.
 See **How to Use** section below for a quick start.
 
-Note: ***Work is still in progress. Not all examples work as described!***
-
 ## Azure functions
 
 Azure Functions is a solution for easily running small pieces of code, or "functions" in the cloud.
@@ -21,19 +19,14 @@ You can install this module from PowerShell Gallery (preferred way) or by clonin
 ### From PSGallery
 
 ```PowerShell
-Find-Module EasyAzureFunction | Install-Module -Scope CurrentUser -Force
+Find-Module EasyAzureFunction -Repository PSGallery | Install-Module -Scope CurrentUser -Force
 ```
 
 ### From GitHub
 
 ``` PowerShell
-# Create empty folder and go into it
-New-Item -Name EasyAzureFunction -ItemType Directory
-Set-Location  .\EasyAzureFunction
-# Clone this repository
-git clone https://github.com/iricigor/EasyAzureFunction.git
-# Import module
-Import-Module .\EasyAzureFunction.psd1 -Force
+git clone https://github.com/iricigor/EasyAzureFunction.git      # Clone this repository
+Import-Module .\EasyAzureFunction\EasyAzureFunction.psd1 -Force  # Import module
 ```
 
 ## How to use
