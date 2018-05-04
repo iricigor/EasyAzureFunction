@@ -66,7 +66,7 @@ function Convert-ParametersToRunner {
             }
             $Response += '    "Params: $($ParamsHash.Keys -join `",`")"' # logging to AzF console
             $Response += "    `$Output = $C1 @ParamsHash | Out-String"
-            $Response +- '    if ($Output) {$Color = ''white''}','else {$Color = ''gray''; $Output = ''Command run successfully, but it returned no output''}'
+            $Response += '    if ($Output) {$Color = ''white''}','else {$Color = ''gray''; $Output = ''Command run successfully, but it returned no output''}'
             $Response += '  } catch {','    $Output = $_','    $Color = ''red''','  }' # TODO: Sometimes not working, error crashes web app
 
             $Response += '  $Head = ''<head><style>body {background-color: #012456; color: $Color;}</style></head>'''
