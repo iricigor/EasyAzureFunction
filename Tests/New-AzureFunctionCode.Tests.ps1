@@ -57,7 +57,7 @@ Describe "Function-Definition" {
 
 Describe "Function-Functionality" {
 
-    $Folder0 = $env:TEMP # This might not work on Linux
+    $Folder0 = [system.io.path]::GetTempPath()
     $Commands = @('Get-Command','Get-Process')
 
     It 'Files should not be there before running command' {

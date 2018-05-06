@@ -1,4 +1,3 @@
-
 # EasyAzureFunction
 
 [![Build status](https://ci.appveyor.com/api/projects/status/kkjs02jl860sx7ra?svg=true)](https://ci.appveyor.com/project/iricigor/easyazurefunction)
@@ -24,7 +23,7 @@ Find-Module EasyAzureFunction -Repository PSGallery | Install-Module -Scope Curr
 
 ### From GitHub
 
-``` PowerShell
+```PowerShell
 git clone https://github.com/iricigor/EasyAzureFunction.git      # Clone this repository
 Import-Module .\EasyAzureFunction\EasyAzureFunction.psd1 -Force  # Import module
 ```
@@ -78,31 +77,9 @@ All of these links will open Azure Functions web page, so just click it and see 
 
 - Generated html file only supports strings in input fields. If a command expects certain complex object (i.e. PSCredentials, PSSession, etc.), it will fail
 
-## ToDo list
-
-### Before publishing to 0.9
-
-- [x] Add Pester tests
-- [x] Add documentation, via PlatyPS
-- [x] Add primary function to call two private ones
-- [x] Add psd1
-- [ ] Add CI/CD pipeline, publish to PSGallery
-- [x] Add build badge
-- [x] Add go back link at the end of results page
-
-### Do it later
-
-- [ ] Add support for script with parameters and script with function(s) inside
-- [ ] Add more tasks here, or in the issues (with link from here)
-- [ ] Test with PowerShell core
-- [ ] Unify argument names (Name vs CommandName vs Command), add support for pipeline from Get-Command
-- [ ] Verify if command exists on remote system before running it, add switch PreCode?
-- [ ] Add images for creating AzF, my examples
-- [ ] Split readme into more MD files (like todo.md, etc.)
-
 ## Thanks list
 
-- Tobias [@TobiasPSP](https://twitter.com/TobiasPSP) for great and inspiring PowerShell conference [PSConfEU](http://www.psconf.eu/) 2018
+- Tobias [@TobiasPSP](https://twitter.com/TobiasPSP) for great and inspiring conference [PSConfEU](http://www.psconf.eu/) 2018
 - Sergei [@xvorsx](https://twitter.com/xvorsx) for nice introduction to [PlatyPS](https://github.com/PowerShell/platyPS)
 - Jakub [@nohwnd](https://github.com/nohwnd) for great testing framework [Pester](https://github.com/pester/Pester)
 - Aleksandar [@alexandair](https://twitter.com/alexandair) - for great social component at the PSConfEU conference

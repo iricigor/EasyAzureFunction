@@ -30,7 +30,7 @@ PS C:\> New-AzureFunctionCode Get-Command -Invoke
 
 It will generate files used for running PowerShell commandlet **Get-Command** in Azure Function.
 
-Files will be located in user's TEMP folder which will be invoked (opened) via default application (usually Windows Explorer)
+Files will be located in TEMP folder which will be invoked (opened) via default application (usually Windows Explorer)
 
 ### Example 2
 ```powershell

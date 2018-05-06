@@ -5,7 +5,7 @@ function New-AzureFunctionCode {
 
     param (
         [string[]]$Command,
-        [string]$Path = $env:TEMP, # TODO: This might not be compatible with PSCore
+        [string]$Path = [system.io.path]::GetTempPath(),
         [switch]$Invoke
 
     )
@@ -40,7 +40,8 @@ function New-AzureFunctionCode {
 
     END {
         if ($Invoke) {
-            Invoke-Item $Path
+            try {Invoke-Item $Path} # TODO: Investigate why Invoke-Item /tmp fails under Linux, or just ignore switch under Linux?
+            catch {Write-Error "Invoke failed. Output files are stored under $Path folder"}
         }
     }
 }

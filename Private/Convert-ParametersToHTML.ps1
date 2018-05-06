@@ -30,7 +30,7 @@ function Convert-ParametersToHTML () {
     PROCESS {
         foreach ($C1 in $Command) {
             Write-Verbose -Message "Processing command $C1"
-            $Params = Get-Parameter $C1 | Sort ParameterSet
+            $Params = Get-Parameter $C1 | Sort-Object ParameterSet
             $ShowSets = ($Params | Select -Unique ParameterSet).Count -gt 1
             $PrevParamSet = ''
             $Response += "<form action='' method='post'>","<h1>$C1</h1>","<hr>"
