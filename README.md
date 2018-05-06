@@ -67,9 +67,10 @@ Advanced users can do these actions also via FTP.
 
 See some basic examples for built in commands:
 
-- [Get-Command](https://ezazf.azurewebsites.net/api/GC)
-- [Get-Process](https://ezazf.azurewebsites.net/api/GP)
-- [Get-Module](https://ezazf.azurewebsites.net/api/GM)
+- [Get-Command](https://ezazf.azurewebsites.net/api/GC) - type Pester as parameter -Module value
+- [Get-Process](https://ezazf.azurewebsites.net/api/GP) - run without any parameters to see all visible processes
+- [Get-Module](https://ezazf.azurewebsites.net/api/GM) - run with -ListAvailable
+- [Write-Output](https://ezazf.azurewebsites.net/api/WO) - try to create 'Hello world!' example
 
 All of these links will open Azure Functions web page, so just click it and see it in action.
 

@@ -26,15 +26,6 @@ function Convert-ParametersToRunner {
             $Params = Get-Parameter $C1 
 
             # generate code to read parameters
-
-            # According to documentation / template POST should give me json formatted parameters, but I got them HTML encoded like Igor=1&Joey=2
-            # $Response += '', '# POST method: $req', '$requestBody = Get-Content $req -Raw | ConvertFrom-Json'
-            # $Response += "`$InvokeCommand = `$requestBody.InvokeCommand" # reads hidden parameter
-            # foreach ($P1 in $Params) {
-            #     $Response += "`$$P1 = `$requestBody.$P1"  # output like $url = $req_query_url
-            # }
-
-            # TODO: Add some logging options 
             $Response += '', '# POST method: $req', '$requestContent = Get-Content $req -Raw'
             # try to properly parse json response
             $Response += 'try {','  $requestBody = $requestContent | ConvertFrom-Json','  $Failed = $false'
@@ -71,7 +62,7 @@ function Convert-ParametersToRunner {
 
             $Response += '  $Head = "<head><style>body {background-color: #012456; color: $Color;}</style></head>"'
             $Response += '  $Back = ''<p><a href="javascript:history.back()" style="color:yellow;">Go Back</a></p>'''
-            $Response += "  `$Output = `$Head + '<pre>' + `$Output + '</pre>' + `$Back"
+            $Response += "  `$Output = `$Head + '<pre>' + `$Output + `$Back + '</pre>'"
             $Response += "  `$Output = `$Output -replace `"``n`",'</br>'",'}'
                         
             # convert output to HTML and parse it back

@@ -60,7 +60,7 @@ Describe 'Proper Documentation' {
 		# update documentation 
 		Push-Location -Path $root
 		Update-MarkdownHelp -Path .\docs
-        $diff = git diff
+        $diff = git diff .\Docs
         Pop-Location
 		$diff | Should -Be $null
 	}

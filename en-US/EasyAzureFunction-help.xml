@@ -15,7 +15,7 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-Parameter</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="Name">
           <maml:name>CommandName</maml:name>
           <maml:Description>
             <maml:para>Specify for which command it will output parameters.</maml:para>
@@ -31,7 +31,7 @@
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="Name">
         <maml:name>CommandName</maml:name>
         <maml:Description>
           <maml:para>Specify for which command it will output parameters.</maml:para>
@@ -102,19 +102,6 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>New-AzureFunctionCode</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
-          <maml:name>Command</maml:name>
-          <maml:Description>
-            <maml:para>Name of the command for which files will be generated. </maml:para>
-            <maml:para>Ultimately, this value(s) will be passed to Get-Command commandlet.</maml:para>
-          </maml:Description>
-          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
-          <dev:type>
-            <maml:name>String[]</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>Path</maml:name>
           <maml:Description>
@@ -140,22 +127,21 @@
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="Name">
+          <maml:name>CommandName</maml:name>
+          <maml:Description>
+            <maml:para>{{Fill CommandName Description}}</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
-        <maml:name>Command</maml:name>
-        <maml:Description>
-          <maml:para>Name of the command for which files will be generated. </maml:para>
-          <maml:para>Ultimately, this value(s) will be passed to Get-Command commandlet.</maml:para>
-        </maml:Description>
-        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
-        <dev:type>
-          <maml:name>String[]</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Invoke</maml:name>
         <maml:Description>
@@ -178,6 +164,18 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="Name">
+        <maml:name>CommandName</maml:name>
+        <maml:Description>
+          <maml:para>{{Fill CommandName Description}}</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -214,7 +212,7 @@
         <dev:code>PS C:\&gt; New-AzureFunctionCode Get-Command -Invoke</dev:code>
         <dev:remarks>
           <maml:para>It will generate files used for running PowerShell commandlet Get-Command in Azure Function.</maml:para>
-          <maml:para>Files will be located in user's TEMP folder which will be invoked (opened) via default application (usually Windows Explorer)</maml:para>
+          <maml:para>Files will be located in TEMP folder which will be invoked (opened) via default application (usually Windows Explorer)</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>

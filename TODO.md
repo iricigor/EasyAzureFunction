@@ -6,11 +6,11 @@
 
 - [x] Test with PowerShell core
 - [x] Unify argument names (Name vs CommandName vs Command), add support for pipeline from Get-Command
-- [ ] Verify if command exists on remote system before running it
+- [x] Verify if command exists on remote system before running it, not needed
 - [ ] Add switch PreCode?
 - [x] Split readme into more MD files (like todo.md, etc.)
-- [ ] Add Write-Host/Output examples
-- [ ] Include GoBack into pre tag
+- [x] Add Write-Output examples
+- [x] Include GoBack into pre tag
 - [x] Move these docs to root folder
 - [x] Test documentation into Pester
 
