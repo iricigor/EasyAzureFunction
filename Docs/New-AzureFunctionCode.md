@@ -13,7 +13,7 @@ Function generates two files (index.html and run.ps1) that can be used to run Az
 ## SYNTAX
 
 ```
-New-AzureFunctionCode [[-Command] <String[]>] [[-Path] <String>] [-Invoke]
+New-AzureFunctionCode [[-Command] <String[]>] [[-Path] <String>] [-Invoke] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,10 +96,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
-
 
 ## OUTPUTS
 

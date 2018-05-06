@@ -9,7 +9,7 @@
 - [ ] Verify if command exists on remote system before running it, add switch PreCode?
 - [x] Split readme into more MD files (like todo.md, etc.)
 - [ ] Add Write-Host/Output examples
-- [ ] Include GoBack into <pre> tag <- fix this
+- [ ] Include GoBack into pre tag
 - [x] Move these docs to root folder
 - [ ] Test documentation into Pester
 

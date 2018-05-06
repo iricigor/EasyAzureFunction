@@ -50,20 +50,18 @@ Describe 'Proper Declarations' {
 # Check if documentation is proper
 #
 
-<#
 Describe 'Proper documentation' {
 
 	It 'Updates documentation and does git diff' {
 		# install PlatyPS
-		# Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
-		Install-Module platyPS -Force
+        # Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+        if (!(Get-Module platyPS -List -ea 0)) {Install-Module platyPS -Force -Scope CurrentUser}
 		Import-Module platyPS
 		# update documentation 
-		cd $here
+		Push-Location -Path $root
 		Update-MarkdownHelp -Path .\docs
-		cd ..
-		$diff = git diff
+        $diff = git diff
+        Pop-Location
 		$diff | Should -Be $null
 	}
 }
-#>
