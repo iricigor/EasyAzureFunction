@@ -8,5 +8,5 @@ Invoke-Expression $PC
 New-AzureFunctionCode  -CommandName Hello -PreCode $PC
 ```
 
-Parameter -PreCode defines custom function **Hello** which will be executed (defined) within Azure Function.
+Parameter **-PreCode** defines custom function **Hello** which will be executed (defined) within Azure Function.
 This function should be also available in current user space in order for local functions to analyze it properly.

@@ -130,11 +130,23 @@
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="Name">
           <maml:name>CommandName</maml:name>
           <maml:Description>
-            <maml:para>{{Fill CommandName Description}}</maml:para>
+            <maml:para>Name of the command for which files will be generated. Ultimately, this value(s) will be passed to Get-Command commandlet.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
           <dev:type>
             <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>PreCode</maml:name>
+          <maml:Description>
+            <maml:para>If you want to execute custom PowerShell commands before running your command, specify it as -PreCode. This can be for example definition of your custom function, or installing/importing some 3rd party modules.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -171,11 +183,23 @@
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="Name">
         <maml:name>CommandName</maml:name>
         <maml:Description>
-          <maml:para>{{Fill CommandName Description}}</maml:para>
+          <maml:para>Name of the command for which files will be generated. Ultimately, this value(s) will be passed to Get-Command commandlet.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         <dev:type>
           <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>PreCode</maml:name>
+        <maml:Description>
+          <maml:para>If you want to execute custom PowerShell commands before running your command, specify it as -PreCode. This can be for example definition of your custom function, or installing/importing some 3rd party modules.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -221,6 +245,14 @@
         <dev:remarks>
           <maml:para>It will generate files used for running specified two PowerShell commandlets.</maml:para>
           <maml:para>Each commandlet will get its own folder under specified path.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; New-AzureFunctionCode  -CommandName Hello -PreCode 'function Hello([string]$Name="World"){"Hello $Name"}'</dev:code>
+        <dev:remarks>
+          <maml:para>Example shows how to use -PreCode to execute custom code before running actual command within Azure Function.</maml:para>
+          <maml:para>Parameter -PreCode can be also used to install/import third party modules from the Internet.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>

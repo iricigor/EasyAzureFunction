@@ -87,8 +87,7 @@ function Convert-ParametersToHTML () {
                 $Response += "<p></p><input type=submit value='  Run $C1  ' class='btn btn-primary btn-block py-3'>","</form>",'<p></p>'
                 $Response += '<div class="bg-info">Created with EasyAzureFunction module <a href="https://github.com/iricigor/EasyAzureFunction"><span class="glyphicon glyphicon-link"></span></a>'
                 $Response += ' by Igor Iric <a href="mailto:iricigor@gmail.com?Subject=EasyAzureFunction"><span class="glyphicon glyphicon-envelope"></span></a></div>'
-            }
-            
+            }            
         }
     }
 

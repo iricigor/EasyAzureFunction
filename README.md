@@ -5,6 +5,9 @@
 This PowerShell module helps you to create local files for easy start with Azure Functions.
 See **How to Use** section below for a quick start.
 
+If you already have your Azure Function created (or you know how to do it), then just run ```New-AzFC <MyCommand>``` and upload generated files to your function! Simple as that!
+If you want to learn how PowerShell Azure Function works, check run.ps1 in [Examples](Examples) folders.
+
 ## Azure functions
 
 Azure Functions is a solution for easily running small pieces of code, or "functions" in the cloud.
@@ -32,12 +35,10 @@ Import-Module .\EasyAzureFunction\EasyAzureFunction.psd1 -Force  # Import module
 
 In order to fully use this module, you need have Azure function and do two simple steps.
 
-If you already have AzF, you just run ```New-AzFC <MyCommand>``` and then upload generated files to your function! Simple as that!
+### Create Azure Function
 
-### Create Azure function
-
-You would need to have default HTTP triggered PowerShell function created in your Azure subscription.
-If you dont have Azure subscription, you can get free account [here](https://azure.microsoft.com/en-us/free/).
+You would need to have HTTP triggered PowerShell function created in your Azure subscription.
+If you do not have Azure subscription, you can get free account [here](https://azure.microsoft.com/en-us/free/).
 
 Creating AzF is fairly simple: Click on 'Create a resource', search and select 'Function App', fill in required values and click on 'Create'.
 Once your App is deployed, find it under 'Function Apps' service group.
@@ -74,7 +75,7 @@ Here are some basic examples for built in PowerShell commands. All of these link
 And here are some examples using non-Get functions
 
 - [Write-Output](https://ezazf.azurewebsites.net/api/WO) - try to create 'Hello world!' example
-- [Hello-World](https://ezazf.azurewebsites.net/api/HW) - created with -PreCode parameter, see [Examples\HW](Examples\HW) folder
+- [Hello-World](https://ezazf.azurewebsites.net/api/HW) - created with -PreCode parameter, see [Examples/HW](Examples/HW) folder
 
 ## Known limitations
 

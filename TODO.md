@@ -22,6 +22,7 @@
 - [ ] Add more tasks here, or in the issues (with link from here)
 - [ ] Implement array support
 - [ ] Test generated ps1 and html file if they have valid syntax
+- [ ] Add Skype chat button, from file on github
 
 ## Done
 
