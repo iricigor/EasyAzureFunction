@@ -10,6 +10,8 @@ function New-AzureFunctionCode {
 
         [string]$Path = [system.io.path]::GetTempPath(),
 
+        [string]$PreCode,
+
         [switch]$Invoke
 
     )
@@ -38,7 +40,7 @@ function New-AzureFunctionCode {
 
             # generate files
             Convert-ParametersToHTML -Command $C1 -Bootstrap | Out-File (Join-Path $P1 'index.html') -Force -Encoding utf8
-            Convert-ParametersToRunner -Command $C1 | Out-File (Join-Path $P1 'run.ps1') -Force -Encoding utf8
+            Convert-ParametersToRunner -Command $C1 -PreCode $PreCode | Out-File (Join-Path $P1 'run.ps1') -Force -Encoding utf8
         }
     }
 

@@ -65,14 +65,16 @@ Advanced users can do these actions also via FTP.
 
 ## Examples
 
-See some basic examples for built in commands:
+Here are some basic examples for built in PowerShell commands. All of these links will open Azure Functions web page, so just click it and see it in action.
 
 - [Get-Command](https://ezazf.azurewebsites.net/api/GC) - type Pester as parameter -Module value
 - [Get-Process](https://ezazf.azurewebsites.net/api/GP) - run without any parameters to see all visible processes
 - [Get-Module](https://ezazf.azurewebsites.net/api/GM) - run with -ListAvailable
-- [Write-Output](https://ezazf.azurewebsites.net/api/WO) - try to create 'Hello world!' example
 
-All of these links will open Azure Functions web page, so just click it and see it in action.
+And here are some examples using non-Get functions
+
+- [Write-Output](https://ezazf.azurewebsites.net/api/WO) - try to create 'Hello world!' example
+- [Hello-World](https://ezazf.azurewebsites.net/api/HW) - created with -PreCode parameter, see [Examples\HW](Examples\HW) folder
 
 ## Known limitations
 

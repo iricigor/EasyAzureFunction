@@ -7,7 +7,7 @@
 - [x] Test with PowerShell core
 - [x] Unify argument names (Name vs CommandName vs Command), add support for pipeline from Get-Command
 - [x] Verify if command exists on remote system before running it, not needed
-- [ ] Add switch PreCode?
+- [x] Add switch PreCode and Hello World example
 - [x] Split readme into more MD files (like todo.md, etc.)
 - [x] Add Write-Output examples
 - [x] Include GoBack into pre tag
@@ -20,6 +20,8 @@
 - [ ] Add better deployment to PS Gallery
 - [ ] Add support for script with parameters and script with function(s) inside
 - [ ] Add more tasks here, or in the issues (with link from here)
+- [ ] Implement array support
+- [ ] Test generated ps1 and html file if they have valid syntax
 
 ## Done
 

@@ -7,6 +7,8 @@ Date: TBA
 ### New functions
 
 - Module is now cross platform compatible (tested with Win10/PS5.1 and Deb9/PS6.1P2)
+- Parameter -PreCode implemented
+- Added 2 more examples: WO, HW
 
 ## 0.1 - Initial release
 

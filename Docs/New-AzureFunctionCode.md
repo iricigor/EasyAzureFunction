@@ -13,7 +13,8 @@ Function generates two files (index.html and run.ps1) that can be used to run Az
 ## SYNTAX
 
 ```
-New-AzureFunctionCode -CommandName <String[]> [[-Path] <String>] [-Invoke] [<CommonParameters>]
+New-AzureFunctionCode -CommandName <String[]> [[-Path] <String>] [-PreCode <String>] [-Invoke]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,6 +25,7 @@ For more info, see README on GitHub repository, link is provided below.
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
 PS C:\> New-AzureFunctionCode Get-Command -Invoke
 ```
@@ -33,6 +35,7 @@ It will generate files used for running PowerShell commandlet **Get-Command** in
 Files will be located in TEMP folder which will be invoked (opened) via default application (usually Windows Explorer)
 
 ### Example 2
+
 ```powershell
 PS C:\> New-AzureFunctionCode -Command Get-Location, Get-Process -Path C:\EzAzF
 ```
@@ -40,6 +43,16 @@ PS C:\> New-AzureFunctionCode -Command Get-Location, Get-Process -Path C:\EzAzF
 It will generate files used for running specified two PowerShell commandlets.
 
 Each commandlet will get its own folder under specified path.
+
+### Example 3
+
+```powershell
+PS C:\> New-AzureFunctionCode  -CommandName Hello -PreCode 'function Hello([string]$Name="World"){"Hello $Name"}'
+```
+
+Example shows how to use **-PreCode** to execute custom code before running actual command within Azure Function.
+
+Parameter -PreCode can be also used to install/import third party modules from the Internet.
 
 ## PARAMETERS
 
@@ -80,7 +93,9 @@ Accept wildcard characters: False
 ```
 
 ### -CommandName
-{{Fill CommandName Description}}
+
+Name of the command for which files will be generated.
+Ultimately, this value(s) will be passed to Get-Command commandlet.
 
 ```yaml
 Type: String[]
@@ -91,6 +106,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -PreCode
+If you want to execute custom PowerShell commands before running your command, specify it as -PreCode.
+This can be for example definition of your custom function, or installing/importing some 3rd party modules.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

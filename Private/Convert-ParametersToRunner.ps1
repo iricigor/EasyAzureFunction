@@ -5,6 +5,7 @@ function Convert-ParametersToRunner {
     param (
         
         [string[]]$Command,
+        [string]$PreCode,
         [switch]$Invoke,
         [switch]$Clipboard
 
@@ -43,7 +44,7 @@ function Convert-ParametersToRunner {
             $Response += '','# prepare output, either default web-page or invoke command'
             $Response += "if (!`$$Prefix`InvokeCommand) {","  'show default web page'", '  cd $EXECUTION_CONTEXT_FUNCTIONDIRECTORY', '  $Output = Get-Content .\index.html -Raw'
 
-            # generate code to invoke command in try catch block, using parameters splatting
+            # generate code to prepare parameters splatting
             $Response += '} else {',"  'invoke command'", '  try {'
             $Response += "    `$ParamsHash = @{}"
             foreach ($P1 in ($Params | Select -Unique Name, Type)) {
@@ -55,6 +56,9 @@ function Convert-ParametersToRunner {
                 }                
                 # TODO: Handle arrays, etc.
             }
+            # run custom code
+            if ($PreCode) {$Response += "    $PreCode"}
+            # generate code to invoke command and handle output
             $Response += '    "Params: $($ParamsHash.Keys -join `",`")"' # logging to AzF console
             $Response += "    `$Output = $C1 @ParamsHash | Out-String"
             $Response += '    if ($Output) {$Color = ''white''}','else {$Color = ''gray''; $Output = ''Command run successfully, but it returned no output''}'
