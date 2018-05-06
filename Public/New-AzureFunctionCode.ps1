@@ -4,8 +4,12 @@ function New-AzureFunctionCode {
     # files can be just uploaded to azure function and executed to simulate server-less command running 
 
     param (
-        [string[]]$Command,
+        
+        [parameter(Mandatory=$true,ValueFromPipeline=$true,ValueFromPipelineByPropertyName=$true,Position=0)]
+        [Alias('Name')][string[]]$CommandName,
+
         [string]$Path = [system.io.path]::GetTempPath(),
+
         [switch]$Invoke
 
     )
@@ -17,10 +21,10 @@ function New-AzureFunctionCode {
     }
 
     PROCESS {
-        foreach ($C1 in $Command) {
+        foreach ($C1 in $CommandName) {
             
             # prepare folder
-            if ($Command.Count -gt 1) {$P1 = Join-Path $Path $C1} 
+            if ($CommandName.Count -gt 1) {$P1 = Join-Path $Path $C1} 
             else {$P1 = $Path}
             if (!(Test-Path $P1)) {New-Item $P1 -ItemType Directory -Force | Out-Null}
 

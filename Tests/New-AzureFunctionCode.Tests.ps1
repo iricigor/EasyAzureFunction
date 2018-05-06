@@ -24,7 +24,7 @@ Describe "Fake-Test" {
 #
 
 $CommandName = 'New-AzureFunctionCode'
-$ParameterNames = @('Command','Path','Invoke')
+$ParameterNames = @('CommandName','Path','Invoke')
 
 Describe "Function-Definition" {
 

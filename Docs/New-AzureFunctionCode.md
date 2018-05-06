@@ -13,7 +13,7 @@ Function generates two files (index.html and run.ps1) that can be used to run Az
 ## SYNTAX
 
 ```
-New-AzureFunctionCode [[-Command] <String[]>] [[-Path] <String>] [-Invoke] [<CommonParameters>]
+New-AzureFunctionCode -CommandName <String[]> [[-Path] <String>] [-Invoke] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,23 +42,6 @@ It will generate files used for running specified two PowerShell commandlets.
 Each commandlet will get its own folder under specified path.
 
 ## PARAMETERS
-
-### -Command
-Name of the command for which files will be generated. 
-
-Ultimately, this value(s) will be passed to **Get-Command** commandlet.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Invoke
 If specify it will open target folder where new files are located.
@@ -93,6 +76,21 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CommandName
+{{Fill CommandName Description}}
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

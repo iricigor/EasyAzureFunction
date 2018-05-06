@@ -1,8 +1,10 @@
 function Get-Parameter () {
 
     param (        
-        [Parameter(Mandatory=$true,ValueFromPipeline=$true)]
-        [string[]]$CommandName
+
+        [parameter(Mandatory=$true,ValueFromPipeline=$true,ValueFromPipelineByPropertyName=$true,Position=0)]
+        [Alias('Name')][string[]]$CommandName
+
     )
     # TODO: Make it accept Get-Command as pipeline input
     # TODO: Add Verbose output

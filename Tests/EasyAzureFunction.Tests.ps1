@@ -50,7 +50,7 @@ Describe 'Proper Declarations' {
 # Check if documentation is proper
 #
 
-Describe 'Proper documentation' {
+Describe 'Proper Documentation' {
 
 	It 'Updates documentation and does git diff' {
 		# install PlatyPS
