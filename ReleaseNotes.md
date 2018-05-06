@@ -2,9 +2,9 @@
 
 ## 0.2
 
-Date: TBA
+Date: May 6th, 2018
 
-### New functions
+### New functionality
 
 - Module is now cross platform compatible (tested with Win10/PS5.1 and Deb9/PS6.1P2)
 - Parameter -PreCode implemented

@@ -2,6 +2,22 @@
 
 ## Open tasks
 
+### Version 0.3
+
+- [ ] Add better deployment to PS Gallery
+- [ ] Add more tasks here, or in the issues (with link from here)
+- [ ] Re-upload examples
+
+### Later
+
+- [ ] Add images for creating AzF, my examples
+- [ ] Add support for script with parameters and script with function(s) inside
+- [ ] Implement array support
+- [ ] Test generated ps1 and html file if they have valid syntax
+- [ ] Add Skype chat button, from file on github
+
+## Done
+
 ### Version 0.2
 
 - [x] Test with PowerShell core
@@ -14,19 +30,7 @@
 - [x] Move these docs to root folder
 - [x] Test documentation into Pester
 
-### Later
-
-- [ ] Add images for creating AzF, my examples
-- [ ] Add better deployment to PS Gallery
-- [ ] Add support for script with parameters and script with function(s) inside
-- [ ] Add more tasks here, or in the issues (with link from here)
-- [ ] Implement array support
-- [ ] Test generated ps1 and html file if they have valid syntax
-- [ ] Add Skype chat button, from file on github
-
-## Done
-
-### Before publishing to 0.1
+### Version 0.1
 
 - [x] Add Pester tests
 - [x] Add documentation, via PlatyPS
