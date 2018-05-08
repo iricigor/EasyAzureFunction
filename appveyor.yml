@@ -12,3 +12,6 @@ build: false
 
 test_script:
 - ps: Invoke-Pester
+
+deploy:
+- ps: Publish-Module -Path . -NuGetApiKey $Env:MyPSGalleryAPIKey -Repository PSGallery
