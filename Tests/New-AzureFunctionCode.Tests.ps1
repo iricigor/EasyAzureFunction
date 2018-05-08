@@ -3,9 +3,9 @@
 #
 
 $ModuleName = 'EasyAzureFunction'
+$here = Split-Path -Parent $MyInvocation.MyCommand.Path
+$root = (get-item $here).Parent.FullName
 if (!(Get-Module $ModuleName)) {
-    $here = Split-Path -Parent $MyInvocation.MyCommand.Path
-    $root = (get-item $here).Parent.FullName
     Import-Module (Join-Path $root "$ModuleName.psd1") -Force
 }
 
