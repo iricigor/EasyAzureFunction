@@ -3,7 +3,7 @@ init:
 
 environment:
   MyPSGalleryAPIKey:
-    secure: UR8SS7r3RhVzvQLt9RPrPuTP/IaBAdRiVdAVkiBOt/I=
+    secure: kIYsNnhXS69KNHOKGmz+GQn5pfwnTer90p7YUk3sKmkvFEwIpvxDjDAFFBu30EJ4
     
 install:
   - cinst pester
