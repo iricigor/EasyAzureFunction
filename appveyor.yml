@@ -1,6 +1,10 @@
 init:
   - git config --global core.autocrlf true
 
+environment:
+  MyPSGalleryAPIKey:
+    secure: UR8SS7r3RhVzvQLt9RPrPuTP/IaBAdRiVdAVkiBOt/I=
+    
 install:
   - cinst pester
 
