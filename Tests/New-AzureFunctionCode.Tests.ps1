@@ -95,7 +95,7 @@ Describe "Function-Functionality" {
         }
     }
 
-    It 'All ps1 files should have valid syntax' {
+    It 'All *.ps1 files should have valid syntax' {
         $TestFunction = Join-Path $here 'Test-PowerShellSyntax.ps1'
         $TestFunction | Should -Exist
         . $TestFunction
@@ -104,4 +104,15 @@ Describe "Function-Functionality" {
             (Test-PowerShellSyntax -Path (Join-Path $Folder 'run.ps1')).SyntaxErrorsFound | Should -Be $false
         }
     }
+
+    It 'All *.html files should have valid syntax' {
+        $TestFunction = Join-Path $here 'Test-HTMLSyntax.ps1'
+        $TestFunction | Should -Exist
+        . $TestFunction
+        foreach ($C1 in $Commands) {
+            $Folder = Join-Path $Folder0 $C1
+            Test-HTMLSyntax -Path (Join-Path $Folder 'index.html') | ? type -eq 'error' | Should -Be $null
+        }
+    }
+
 }
