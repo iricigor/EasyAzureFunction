@@ -4,7 +4,12 @@ init:
 environment:
   MyPSGalleryAPIKey:
     secure: kIYsNnhXS69KNHOKGmz+GQn5pfwnTer90p7YUk3sKmkvFEwIpvxDjDAFFBu30EJ4
-    
+  matrix:
+  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    PowerShellEdition: Desktop
+  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    PowerShellEdition: Core
+
 install:
   - cinst pester
   - appveyor DownloadFile https://www.nuget.org/NuGet.exe

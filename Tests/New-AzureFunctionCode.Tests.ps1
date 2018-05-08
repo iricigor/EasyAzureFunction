@@ -94,4 +94,14 @@ Describe "Function-Functionality" {
             Join-Path $Folder 'FakeFileName' | Should -Not -Exist
         }
     }
+
+    It 'All ps1 files should have valid syntax' {
+        $TestFunction = Join-Path $here 'Test-PowerShellSyntax.ps1'
+        $TestFunction | Should -Exist
+        . $TestFunction
+        foreach ($C1 in $Commands) {
+            $Folder = Join-Path $Folder0 $C1
+            (Test-PowerShellSyntax -Path (Join-Path $Folder 'run.ps1')).SyntaxErrorsFound | Should -Be $false
+        }
+    }
 }
