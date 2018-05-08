@@ -50,6 +50,8 @@ function Convert-ParametersToRunner {
                 $N = $P1.Name
                 if ($P1.Type -eq 'SwitchParameter') {
                     $Response += "    if (`$$Prefix$N) {`$ParamsHash.Add('$N',`$True)}"
+                } elseif ($P1.Type -match '\[]$') {
+                    $Response += "    if (`$$Prefix$N) {`$ParamsHash.Add('$N',`$$Prefix$N -split ',')}"
                 } else {
                     $Response += "    if (`$$Prefix$N) {`$ParamsHash.Add('$N',`$$Prefix$N)}"
                 }                

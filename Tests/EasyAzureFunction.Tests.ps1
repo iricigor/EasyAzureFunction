@@ -14,6 +14,16 @@ $root = (get-item $here).Parent.FullName
 Import-Module (Join-Path $root "$ModuleName.psd1") -Force
 
 #
+# Display troubleshooting variables
+#
+
+$PSVersionTable
+Get-Module
+Get-Module -ListAvailable PowerShellGet,PackageManagement
+Get-PackageProvider
+Get-PackageProvider -ListAvailable
+
+#
 # Fake test
 #
 

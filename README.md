@@ -21,13 +21,13 @@ and PowerShell specific introduction by Steve Lee [here](https://blogs.msdn.micr
 
 You can install this module from PowerShell Gallery (preferred way) or by cloning GitHub repository.
 
-### From PSGallery
+**From PSGallery**
 
 ```PowerShell
 Find-Module EasyAzureFunction -Repository PSGallery | Install-Module -Scope CurrentUser -Force
 ```
 
-### From GitHub
+**From GitHub**
 
 ```PowerShell
 git clone https://github.com/iricigor/EasyAzureFunction.git      # Clone this repository
@@ -83,6 +83,7 @@ And here are some examples using non-Get functions
 ## Known limitations
 
 - Generated html file only supports strings in input fields. If a command expects certain complex object (i.e. PSCredentials, PSSession, etc.), it will fail
+- Generated html does only basic parsing of arrays (split on comma), so it might not work always as expected
 
 ## Thanks list
 
