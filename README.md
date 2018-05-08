@@ -1,7 +1,7 @@
 # EasyAzureFunction
 
 [![Build status](https://ci.appveyor.com/api/projects/status/kkjs02jl860sx7ra?svg=true)](https://ci.appveyor.com/project/iricigor/easyazurefunction)
-<a href="skype:iricigor?chat"><img src="https://secure.skypeassets.com/content/dam/scom/legal/brand-guidelines/skype-icon.svg" alt="Skype" width='22' height='22'/> Chat</a>
+[![Skype icon](Images/skype-icon.png) Chat](skype:iricigor?chat)
 
 This PowerShell module helps you to create local files for easy start with Azure Functions.
 See **How to Use** section below for a quick start.
