@@ -7,10 +7,10 @@
 - [ ] Add better deployment to PS Gallery
 - [ ] Add more tasks here, or in the issues (with link from here)
 - [ ] Re-upload examples
+- [ ] Add images for creating AzF, my examples
 
 ### Later
 
-- [ ] Add images for creating AzF, my examples
 - [ ] Add support for script with parameters and script with function(s) inside
 - [ ] Implement array support
 - [ ] Test generated ps1 and html file if they have valid syntax
