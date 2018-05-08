@@ -7,6 +7,7 @@
 - [x] Add title to both index.html and run.ps1 pages
 - [ ] Implement array support
 - [ ] Test generated ps1 and validate html file if they have valid syntax
+- [x] https://www.w3.org/International/questions/qa-html-encoding-declarations
 
 ### Later
 
@@ -15,7 +16,7 @@
 ## Documentation updates
 
 - [ ] Add more tasks here, or in the issues (with link from here)
-- [x] Re-upload examples
+- [ ] Re-upload examples
 - [ ] Add images for creating AzF, my examples
 - [x] Add Skype chat button on github
 
