@@ -5,6 +5,9 @@
 ### Version 0.3
 
 - [ ] Add better deployment to PS Gallery
+
+### Version 0.4
+
 - [ ] Add more tasks here, or in the issues (with link from here)
 - [ ] Re-upload examples
 - [ ] Add images for creating AzF, my examples
