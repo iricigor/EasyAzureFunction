@@ -33,12 +33,12 @@ if (!$EzInvokeCommand) {
     "Params: $($ParamsHash.Keys -join `",`")"
     $Output = Write-Output @ParamsHash | Out-String
     if ($Output) {$Color = 'white'}
-else {$Color = 'gray'; $Output = 'Command run successfully, but it returned no output'}
+    else {$Color = 'gray'; $Output = 'Command run successfully, but it returned no output'}
   } catch {
     $Output = $_
     $Color = 'red'
   }
-  $Head = "<head><style>body {background-color: #012456; color: $Color;}</style></head>"
+  $Head = "<head><style>body {background-color: #012456; color: $Color;}</style><title>EasyAzureFunction - Write-Output running example</title></head>"
   $Back = '<p><a href="javascript:history.back()" style="color:yellow;">Go Back</a></p>'
   $Output = $Head + '<pre>' + $Output + $Back + '</pre>'
   $Output = $Output -replace "`n",'</br>'

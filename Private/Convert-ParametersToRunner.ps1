@@ -4,7 +4,7 @@ function Convert-ParametersToRunner {
 
     param (
         
-        [string[]]$Command,
+        [string]$Command,
         [string]$PreCode,
         [switch]$Invoke,
         [switch]$Clipboard
@@ -20,7 +20,7 @@ function Convert-ParametersToRunner {
 
     PROCESS {
 
-        foreach ($C1 in $Command) { # TODO: Recheck logic for more than one command, check also END block
+        foreach ($C1 in $Command) { # Initially $Command was an array
 
             Write-Verbose -Message "Processing command $C1"
             $Params = Get-Parameter $C1 
@@ -63,7 +63,7 @@ function Convert-ParametersToRunner {
             $Response += '    if ($Output) {$Color = ''white''}','    else {$Color = ''gray''; $Output = ''Command run successfully, but it returned no output''}'
             $Response += '  } catch {','    $Output = $_','    $Color = ''red''','  }' # TODO: Sometimes not working, error crashes web app
 
-            $Response += '  $Head = "<head><style>body {background-color: #012456; color: $Color;}</style></head>"'
+            $Response += '  $Head = "<head><style>body {background-color: #012456; color: $Color;}</style><title>EasyAzureFunction - ' + $C1 + ' running example</title></head>"'
             $Response += '  $Back = ''<p><a href="javascript:history.back()" style="color:yellow;">Go Back</a></p>'''
             $Response += "  `$Output = `$Head + '<pre>' + `$Output + `$Back + '</pre>'"
             $Response += "  `$Output = `$Output -replace `"``n`",'</br>'",'}'

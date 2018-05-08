@@ -2,24 +2,28 @@
 
 ## Open tasks
 
-### Version 0.3
-
-- [ ] Add better deployment to PS Gallery
-
 ### Version 0.4
 
-- [ ] Add more tasks here, or in the issues (with link from here)
-- [ ] Re-upload examples
-- [ ] Add images for creating AzF, my examples
+- [x] Add title to both index.html and run.ps1 pages
+- [ ] Implement array support
+- [ ] Test generated ps1 and validate html file if they have valid syntax
 
 ### Later
 
 - [ ] Add support for script with parameters and script with function(s) inside
-- [ ] Implement array support
-- [ ] Test generated ps1 and html file if they have valid syntax
-- [ ] Add Skype chat button, from file on github
+
+## Documentation updates
+
+- [ ] Add more tasks here, or in the issues (with link from here)
+- [x] Re-upload examples
+- [ ] Add images for creating AzF, my examples
+- [x] Add Skype chat button on github
 
 ## Done
+
+### Version 0.3
+
+- [x] Add better deployment to PS Gallery
 
 ### Version 0.2
 

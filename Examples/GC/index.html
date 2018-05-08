@@ -4,11 +4,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>EasyAzureFunction - Get-Command- input parameters</title>
 </head>
 
 <body>
 <div class="container">
-<form action='' method='post'>
+<form method='post'>
 <h1>Get-Command</h1>
 <hr>
 <input type='hidden' name='EzInvokeCommand' value='1'>
@@ -26,20 +27,20 @@
   <input type='text' class='form-control' name='EzTotalCount' placeholder='Int32'>
 </div>
 <div class='input-group py-2'>
-  <span class='input-group-addon'>ArgumentList</span>
-  <input type='text' class='form-control' name='EzArgumentList' placeholder='Object[]'>
-</div>
-<div class='input-group py-2'>
-  <span class='input-group-addon'>ParameterType</span>
-  <input type='text' class='form-control' name='EzParameterType' placeholder='PSTypeName[]'>
-</div>
-<div class='input-group py-2'>
   <span class='input-group-addon'>ParameterName</span>
   <input type='text' class='form-control' name='EzParameterName' placeholder='String[]'>
 </div>
 <div class='form-check py-2'>
   <input type='checkbox' name=EzListImported value=1>
   <label class='form-check-label'>ListImported</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ArgumentList</span>
+  <input type='text' class='form-control' name='EzArgumentList' placeholder='Object[]'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ParameterType</span>
+  <input type='text' class='form-control' name='EzParameterType' placeholder='PSTypeName[]'>
 </div>
 <div class='form-check py-2'>
   <input type='checkbox' name=EzAll value=1>
@@ -55,12 +56,12 @@
 </div>
 <h2>AllCommandSet</h2>
 <div class='input-group py-2'>
-  <span class='input-group-addon'>CommandType</span>
-  <input type='text' class='form-control' name='EzCommandType' placeholder='CommandTypes'>
-</div>
-<div class='input-group py-2'>
   <span class='input-group-addon'>Name</span>
   <input type='text' class='form-control' name='EzName' placeholder='String[]'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>CommandType</span>
+  <input type='text' class='form-control' name='EzCommandType' placeholder='CommandTypes'>
 </div>
 <h2>CmdletSet</h2>
 <div class='input-group py-2'>
@@ -71,6 +72,11 @@
   <span class='input-group-addon'>Noun</span>
   <input type='text' class='form-control' name='EzNoun' placeholder='String[]'>
 </div>
-<p></p><input type=submit value='  Run Get-Command  ' class='btn btn-primary btn-block py-3'></div>
+<p></p><input type=submit value='  Run Get-Command  ' class='btn btn-primary btn-block py-3'>
+</form>
+<p></p>
+<div class="bg-info">Created with EasyAzureFunction module <a href="https://github.com/iricigor/EasyAzureFunction"><span class="glyphicon glyphicon-link"></span></a>
+ by Igor Iric <a href="mailto:iricigor@gmail.com?Subject=EasyAzureFunction"><span class="glyphicon glyphicon-envelope"></span></a></div>
+</div>
 </body>
 </html>

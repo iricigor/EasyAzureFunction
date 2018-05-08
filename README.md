@@ -1,6 +1,7 @@
 # EasyAzureFunction
 
 [![Build status](https://ci.appveyor.com/api/projects/status/kkjs02jl860sx7ra?svg=true)](https://ci.appveyor.com/project/iricigor/easyazurefunction)
+[<img src="https://secure.skypeassets.com/content/dam/scom/legal/brand-guidelines/skype-icon.svg" alt="Skype" style="width: 22px;"/> Chat!](skype:iricigor?chat)
 
 This PowerShell module helps you to create local files for easy start with Azure Functions.
 See **How to Use** section below for a quick start.
@@ -69,7 +70,7 @@ Advanced users can do these actions also via FTP.
 
 Here are some basic examples for built in PowerShell commands. All of these links will open Azure Functions web page, so just click it and see it in action.
 
-- [Get-Command](https://ezazf.azurewebsites.net/api/GC) - type Pester as parameter -Module value
+- [Get-Command](https://ezazf.azurewebsites.net/api/GC) - type Pester as value for parameter -Module
 - [Get-Process](https://ezazf.azurewebsites.net/api/GP) - run without any parameters to see all visible processes
 - [Get-Module](https://ezazf.azurewebsites.net/api/GM) - run with -ListAvailable
 

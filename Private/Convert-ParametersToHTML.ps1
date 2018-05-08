@@ -6,7 +6,7 @@ function Convert-ParametersToHTML () {
     
     param (
         
-        [string[]]$Command,
+        [string]$Command,
         [switch]$Invoke,
         [switch]$Bootstrap,
         [switch]$Clipboard
@@ -17,23 +17,23 @@ function Convert-ParametersToHTML () {
         $Prefix = 'Ez'
         $Response = @()
         $Response += '<!DOCTYPE html>','<html lang="en">','<head>'
-        # TODO: Add title tag
         if ($Bootstrap) {
             $Response += '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">'
             $Response += '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>'
             $Response += '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>'
         }
+        $Response += '<title>EasyAzureFunction - ' + $Command + '- input parameters</title>'
         $Response += '</head>','','<body>'
         if ($Bootstrap) {$Response += '<div class="container">'}
     }
 
     PROCESS {
-        foreach ($C1 in $Command) {
+        foreach ($C1 in $Command) {  # initially, $Command was an array
             Write-Verbose -Message "Processing command $C1"
             $Params = Get-Parameter $C1 | Sort-Object ParameterSet
             $ShowSets = ($Params | Select -Unique ParameterSet).Count -gt 1
             $PrevParamSet = ''
-            $Response += "<form action='' method='post'>","<h1>$C1</h1>","<hr>"
+            $Response += "<form method='post'>","<h1>$C1</h1>","<hr>"
             $Response += "<input type='hidden' name='$Prefix`InvokeCommand' value='1'>"
             
             foreach ($P1 in $Params) {
