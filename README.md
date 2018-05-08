@@ -6,7 +6,8 @@ This PowerShell module helps you to create local files for easy start with Azure
 See **How to Use** section below for a quick start.
 
 If you already have your Azure Function created (or you know how to do it), then just run ```New-AzFC <MyCommand>``` and upload generated files to your function! Simple as that!
-If you want to learn how PowerShell Azure Function works, check run.ps1 in [Examples](Examples) folders.
+
+If you want to learn how PowerShell Azure Function works, check run.ps1 files under [Examples](Examples) folders.
 
 ## Azure functions
 
