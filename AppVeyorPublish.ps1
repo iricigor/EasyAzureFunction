@@ -1,6 +1,6 @@
 # only publish if commit message starts with !publish
-if ($APPVEYOR_REPO_COMMIT_MESSAGE -notmatch '^!publish') {
-    Write-Output "No publishing from AppVeyor, to automatically publish, start commit message with !publish"
+if ($Env:APPVEYOR_REPO_COMMIT_MESSAGE -notmatch '!publish$') {
+    Write-Output "No publishing from AppVeyor, to automatically publish, finish commit message with !publish"
     exit
 }
 
