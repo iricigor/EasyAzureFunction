@@ -33,11 +33,11 @@ if (!$EzInvokeCommand) {
   'invoke command'
   try {
     $ParamsHash = @{}
-    if ($EzName) {$ParamsHash.Add('Name',$EzName)}
-    if ($EzId) {$ParamsHash.Add('Id',$EzId)}
-    if ($EzInputObject) {$ParamsHash.Add('InputObject',$EzInputObject)}
+    if ($EzName) {$ParamsHash.Add('Name',@($EzName -replace '%2C',',' -split ','))}
+    if ($EzId) {$ParamsHash.Add('Id',@($EzId -replace '%2C',',' -split ','))}
+    if ($EzInputObject) {$ParamsHash.Add('InputObject',@($EzInputObject -replace '%2C',',' -split ','))}
     if ($EzIncludeUserName) {$ParamsHash.Add('IncludeUserName',$True)}
-    if ($EzComputerName) {$ParamsHash.Add('ComputerName',$EzComputerName)}
+    if ($EzComputerName) {$ParamsHash.Add('ComputerName',@($EzComputerName -replace '%2C',',' -split ','))}
     if ($EzModule) {$ParamsHash.Add('Module',$True)}
     if ($EzFileVersionInfo) {$ParamsHash.Add('FileVersionInfo',$True)}
     "Params: $($ParamsHash.Keys -join `",`")"

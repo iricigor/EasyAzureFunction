@@ -36,8 +36,8 @@ if (!$EzInvokeCommand) {
   'invoke command'
   try {
     $ParamsHash = @{}
-    if ($EzName) {$ParamsHash.Add('Name',$EzName)}
-    if ($EzFullyQualifiedName) {$ParamsHash.Add('FullyQualifiedName',$EzFullyQualifiedName)}
+    if ($EzName) {$ParamsHash.Add('Name',@($EzName -replace '%2C',',' -split ','))}
+    if ($EzFullyQualifiedName) {$ParamsHash.Add('FullyQualifiedName',@($EzFullyQualifiedName -replace '%2C',',' -split ','))}
     if ($EzAll) {$ParamsHash.Add('All',$True)}
     if ($EzListAvailable) {$ParamsHash.Add('ListAvailable',$True)}
     if ($EzPSEdition) {$ParamsHash.Add('PSEdition',$EzPSEdition)}

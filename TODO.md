@@ -19,8 +19,9 @@
 ## Documentation updates
 
 - [ ] Add more tasks here, or in the issues (with link from here)
-- [ ] Re-upload examples
-- [ ] Add images for creating AzF, my examples
+- [x] Re-upload examples
+- [x] Add images for my examples
+- [ ] Add images for creating AzF
 - [x] Add Skype chat button on github
 
 ## Done

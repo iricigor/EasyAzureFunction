@@ -8,10 +8,16 @@ This PowerShell module helps you to create local files for easy start with Azure
 See **How to Use** section below for a quick start.
 
 If you already have your Azure Function created (or you know how to do it), then just run ```New-AzFC <MyCommand>``` and upload generated files to your function! Simple as that!
+Command will generate two files:
 
-If you want to learn how PowerShell Azure Function works, check run.ps1 files under [Examples](Examples) folders.
+- **index.html** - simple web page that enables you to enter input values for commandlet parameters (left/first page in screenshots below)
+- **run.ps1** - actual script that is executed inside of Azure Function
+  - without parameters it returns index.html
+  - with parameters, it executes specified command on web server and returns result (right/second page in screenshots below)
 
-## Azure functions
+If you want to learn how PowerShell Azure Function works, check auto-generated run.ps1 files under [Examples](Examples) folders.
+
+### Azure functions
 
 Azure Functions is a solution for easily running small pieces of code, or "functions" in the cloud.
 See Microsoft introduction [here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview)
@@ -71,14 +77,16 @@ Advanced users can do these actions also via FTP.
 
 Here are some basic examples for built in PowerShell commands. All of these links will open Azure Functions web page, so just click it and see it in action.
 
-- [Get-Command](https://ezazf.azurewebsites.net/api/GC) - type Pester as value for parameter -Module
+- [Get-Command](https://ezazf.azurewebsites.net/api/GC) - type `Pester` as value for parameter `-Module`
 - [Get-Process](https://ezazf.azurewebsites.net/api/GP) - run without any parameters to see all visible processes
-- [Get-Module](https://ezazf.azurewebsites.net/api/GM) - run with -ListAvailable
+- [Get-Module](https://ezazf.azurewebsites.net/api/GM) - select `-ListAvailable` and add `Pester,Dism` in Name field under it
 
 And here are some examples using non-Get functions
 
 - [Write-Output](https://ezazf.azurewebsites.net/api/WO) - try to create 'Hello world!' example
 - [Hello-World](https://ezazf.azurewebsites.net/api/HW) - created with -PreCode parameter, see [Examples/HW](Examples/HW) folder
+
+### Examples Screenshots
 
 ![Easy Azure Function example - Get-Command -Module Pester example](Images/EzAzF-GC.png)
 ![Easy Azure Function example - Get-Process](Images/EzAzF-GP.gif)

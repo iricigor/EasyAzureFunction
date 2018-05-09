@@ -8,7 +8,6 @@ try {
   $Failed = $false
   "Params (JSON): $($requestBody.PSObject.Properties.Name -join `",`")"
   $EzInvokeCommand = $requestBody.EzInvokeCommand
-  $EzAll = $requestBody.EzAll
   $EzName = $requestBody.EzName
   $EzVerb = $requestBody.EzVerb
   $EzNoun = $requestBody.EzNoun
@@ -19,6 +18,7 @@ try {
   $EzSyntax = $requestBody.EzSyntax
   $EzShowCommandInfo = $requestBody.EzShowCommandInfo
   $EzArgumentList = $requestBody.EzArgumentList
+  $EzAll = $requestBody.EzAll
   $EzListImported = $requestBody.EzListImported
   $EzParameterName = $requestBody.EzParameterName
   $EzParameterType = $requestBody.EzParameterType
@@ -40,20 +40,20 @@ if (!$EzInvokeCommand) {
   'invoke command'
   try {
     $ParamsHash = @{}
-    if ($EzAll) {$ParamsHash.Add('All',$True)}
-    if ($EzName) {$ParamsHash.Add('Name',$EzName)}
-    if ($EzVerb) {$ParamsHash.Add('Verb',$EzVerb)}
-    if ($EzNoun) {$ParamsHash.Add('Noun',$EzNoun)}
-    if ($EzModule) {$ParamsHash.Add('Module',$EzModule)}
-    if ($EzFullyQualifiedModule) {$ParamsHash.Add('FullyQualifiedModule',$EzFullyQualifiedModule)}
+    if ($EzName) {$ParamsHash.Add('Name',@($EzName -replace '%2C',',' -split ','))}
+    if ($EzVerb) {$ParamsHash.Add('Verb',@($EzVerb -replace '%2C',',' -split ','))}
+    if ($EzNoun) {$ParamsHash.Add('Noun',@($EzNoun -replace '%2C',',' -split ','))}
+    if ($EzModule) {$ParamsHash.Add('Module',@($EzModule -replace '%2C',',' -split ','))}
+    if ($EzFullyQualifiedModule) {$ParamsHash.Add('FullyQualifiedModule',@($EzFullyQualifiedModule -replace '%2C',',' -split ','))}
     if ($EzCommandType) {$ParamsHash.Add('CommandType',$EzCommandType)}
     if ($EzTotalCount) {$ParamsHash.Add('TotalCount',$EzTotalCount)}
     if ($EzSyntax) {$ParamsHash.Add('Syntax',$True)}
     if ($EzShowCommandInfo) {$ParamsHash.Add('ShowCommandInfo',$True)}
-    if ($EzArgumentList) {$ParamsHash.Add('ArgumentList',$EzArgumentList)}
+    if ($EzArgumentList) {$ParamsHash.Add('ArgumentList',@($EzArgumentList -replace '%2C',',' -split ','))}
+    if ($EzAll) {$ParamsHash.Add('All',$True)}
     if ($EzListImported) {$ParamsHash.Add('ListImported',$True)}
-    if ($EzParameterName) {$ParamsHash.Add('ParameterName',$EzParameterName)}
-    if ($EzParameterType) {$ParamsHash.Add('ParameterType',$EzParameterType)}
+    if ($EzParameterName) {$ParamsHash.Add('ParameterName',@($EzParameterName -replace '%2C',',' -split ','))}
+    if ($EzParameterType) {$ParamsHash.Add('ParameterType',@($EzParameterType -replace '%2C',',' -split ','))}
     "Params: $($ParamsHash.Keys -join `",`")"
     $Output = Get-Command @ParamsHash | Out-String
     if ($Output) {$Color = 'white'}

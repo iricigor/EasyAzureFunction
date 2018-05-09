@@ -28,7 +28,7 @@ if (!$EzInvokeCommand) {
   'invoke command'
   try {
     $ParamsHash = @{}
-    if ($EzInputObject) {$ParamsHash.Add('InputObject',$EzInputObject)}
+    if ($EzInputObject) {$ParamsHash.Add('InputObject',@($EzInputObject -replace '%2C',',' -split ','))}
     if ($EzNoEnumerate) {$ParamsHash.Add('NoEnumerate',$True)}
     "Params: $($ParamsHash.Keys -join `",`")"
     $Output = Write-Output @ParamsHash | Out-String

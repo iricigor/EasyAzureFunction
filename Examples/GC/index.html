@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="utf-8"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -14,6 +15,10 @@
 <hr>
 <input type='hidden' name='EzInvokeCommand' value='1'>
 <h2>__AllParameterSets</h2>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ArgumentList</span>
+  <input type='text' class='form-control' name='EzArgumentList' placeholder='Object[]'>
+</div>
 <div class='form-check py-2'>
   <input type='checkbox' name=EzShowCommandInfo value=1>
   <label class='form-check-label'>ShowCommandInfo</label>
@@ -23,10 +28,6 @@
   <label class='form-check-label'>Syntax</label>
 </div>
 <div class='input-group py-2'>
-  <span class='input-group-addon'>TotalCount</span>
-  <input type='text' class='form-control' name='EzTotalCount' placeholder='Int32'>
-</div>
-<div class='input-group py-2'>
   <span class='input-group-addon'>ParameterName</span>
   <input type='text' class='form-control' name='EzParameterName' placeholder='String[]'>
 </div>
@@ -34,17 +35,13 @@
   <input type='checkbox' name=EzListImported value=1>
   <label class='form-check-label'>ListImported</label>
 </div>
-<div class='input-group py-2'>
-  <span class='input-group-addon'>ArgumentList</span>
-  <input type='text' class='form-control' name='EzArgumentList' placeholder='Object[]'>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzAll value=1>
+  <label class='form-check-label'>All</label>
 </div>
 <div class='input-group py-2'>
   <span class='input-group-addon'>ParameterType</span>
   <input type='text' class='form-control' name='EzParameterType' placeholder='PSTypeName[]'>
-</div>
-<div class='form-check py-2'>
-  <input type='checkbox' name=EzAll value=1>
-  <label class='form-check-label'>All</label>
 </div>
 <div class='input-group py-2'>
   <span class='input-group-addon'>Module</span>
@@ -53,6 +50,10 @@
 <div class='input-group py-2'>
   <span class='input-group-addon'>FullyQualifiedModule</span>
   <input type='text' class='form-control' name='EzFullyQualifiedModule' placeholder='ModuleSpecification[]'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>TotalCount</span>
+  <input type='text' class='form-control' name='EzTotalCount' placeholder='Int32'>
 </div>
 <h2>AllCommandSet</h2>
 <div class='input-group py-2'>
@@ -65,12 +66,12 @@
 </div>
 <h2>CmdletSet</h2>
 <div class='input-group py-2'>
-  <span class='input-group-addon'>Verb</span>
-  <input type='text' class='form-control' name='EzVerb' placeholder='String[]'>
-</div>
-<div class='input-group py-2'>
   <span class='input-group-addon'>Noun</span>
   <input type='text' class='form-control' name='EzNoun' placeholder='String[]'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>Verb</span>
+  <input type='text' class='form-control' name='EzVerb' placeholder='String[]'>
 </div>
 <p></p><input type=submit value='  Run Get-Command  ' class='btn btn-primary btn-block py-3'>
 </form>
