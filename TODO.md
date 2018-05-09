@@ -6,7 +6,7 @@
 
 - [x] Add title to both index.html and run.ps1 pages
 - [x] Implement array support
-- [ ] Test array support
+- [x] Test array support
 - [x] Test generated ps1 and validate html file if they have valid syntax
 - [x] https://www.w3.org/International/questions/qa-html-encoding-declarations
 
@@ -14,6 +14,7 @@
 
 - [ ] Add support for script with parameters and script with function(s) inside
 - [ ] Add complex objects, namely PSCredentials
+- [ ] Add dropdown for enum classes
 
 ## Documentation updates
 

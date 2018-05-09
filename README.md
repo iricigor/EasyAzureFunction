@@ -80,6 +80,9 @@ And here are some examples using non-Get functions
 - [Write-Output](https://ezazf.azurewebsites.net/api/WO) - try to create 'Hello world!' example
 - [Hello-World](https://ezazf.azurewebsites.net/api/HW) - created with -PreCode parameter, see [Examples/HW](Examples/HW) folder
 
+![Easy Azure Function example - Get-Command -Module Pester example](Images/EzAzF-GC.png)
+![Easy Azure Function example - Get-Process](Images/EzAzF-GP.gif)
+
 ## Known limitations
 
 - Generated html file only supports strings in input fields. If a command expects certain complex object (i.e. PSCredentials, PSSession, etc.), it will fail
