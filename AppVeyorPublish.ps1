@@ -14,7 +14,8 @@ $RemoteModule = Find-Module $ModuleName -Repository PSGallery
 $RemoteVersion = $RemoteModule.Version.ToString()
 
 if ($LocalVersion -eq $RemoteVersion) {
-    throw "Module $ModuleName with version $LocalVersion already exists. Consider bumping version."
+    Write-Warning "Module $ModuleName with version $LocalVersion already exists. Consider bumping version."
+    exit
 }
 
 # we proceed with publish
