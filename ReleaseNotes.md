@@ -1,11 +1,13 @@
 # Release notes for module EasyAzureFunction
 
-## 0.4
+## 0.4.0
 
-Date: TBA
+Date: May 9th, 2018
 
 ### New functionality
 
+- Added support for array in input parameters
+- Added test and implemented corrections for validation of html and ps1 files
 - Added title tag to generated pages
 
 ## 0.3.0

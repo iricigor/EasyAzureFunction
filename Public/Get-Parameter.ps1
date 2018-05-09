@@ -6,7 +6,6 @@ function Get-Parameter () {
         [Alias('Name')][string[]]$CommandName
 
     )
-    # TODO: Make it accept Get-Command as pipeline input
     # TODO: Add Verbose output
     
     BEGIN {

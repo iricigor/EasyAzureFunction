@@ -55,7 +55,6 @@ function Convert-ParametersToRunner {
                 } else {
                     $Response += "    if (`$$Prefix$N) {`$ParamsHash.Add('$N',`$$Prefix$N)}"
                 }                
-                # TODO: Handle arrays, etc.
             }
             # run custom code
             if ($PreCode) {$Response += "    $PreCode"}
@@ -63,7 +62,7 @@ function Convert-ParametersToRunner {
             $Response += '    "Params: $($ParamsHash.Keys -join `",`")"' # logging to AzF console
             $Response += "    `$Output = $C1 @ParamsHash | Out-String"
             $Response += '    if ($Output) {$Color = ''white''}','    else {$Color = ''gray''; $Output = ''Command run successfully, but it returned no output''}'
-            $Response += '  } catch {','    $Output = $_','    $Color = ''red''','  }' # TODO: Sometimes not working, error crashes web app
+            $Response += '  } catch {','    $Output = $_','    $Color = ''red''','  }'
 
             $Response += '  $Head = "<head><style>body {background-color: #012456; color: $Color;}</style><title>EasyAzureFunction - ' + $C1 + ' running example</title></head>"'
             $Response += '  $Back = ''<p><a href="javascript:history.back()" style="color:yellow;">Go Back</a></p>'''

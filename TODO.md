@@ -1,5 +1,7 @@
 # ToDo list for module EasyAzureFunction
 
+See live [list of issues](https://github.com/iricigor/EasyAzureFunction/issues). This file will be removed in future.
+
 ## Open tasks
 
 ### Version 0.4
@@ -18,7 +20,7 @@
 
 ## Documentation updates
 
-- [ ] Add more tasks here, or in the issues (with link from here)
+- [x] Add more tasks here, or in the issues (with link from here)
 - [x] Re-upload examples
 - [x] Add images for my examples
 - [ ] Add images for creating AzF
