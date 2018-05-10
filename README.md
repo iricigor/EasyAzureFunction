@@ -4,6 +4,8 @@
 [![latest version](https://img.shields.io/powershellgallery/v/EasyAzureFunction.svg?label=latest+version)](https://www.powershellgallery.com/packages/EasyAzureFunction)
 [![downloads](https://img.shields.io/powershellgallery/dt/EasyAzureFunction.svg?label=downloads)](https://www.powershellgallery.com/packages/EasyAzureFunction)
 
+## Introduction
+
 This PowerShell module helps you to create local files for easy start with Azure Functions.
 See **How to Use** section below for a quick start.
 
@@ -14,6 +16,8 @@ Command will generate two files:
 - **run.ps1** - actual script that is executed inside of Azure Function
   - without parameters it returns index.html
   - with parameters, it executes specified command on web server and returns result (right/second page in screenshots below)
+
+Module is tested on both Windows PowerShell and on PowerShell Core.
 
 If you want to learn how PowerShell Azure Function works, check auto-generated run.ps1 files under [Examples](Examples) folders.
 
@@ -26,14 +30,15 @@ and PowerShell specific introduction by Steve Lee [here](https://blogs.msdn.micr
 ## How to install
 
 You can install this module from PowerShell Gallery (preferred way) or by cloning GitHub repository.
+Module is tested both on Windows PowerShell and PowerShell Core.
 
-**From PSGallery**
+### From PSGallery
 
 ```PowerShell
 Find-Module EasyAzureFunction -Repository PSGallery | Install-Module -Scope CurrentUser -Force
 ```
 
-**From GitHub**
+### From GitHub
 
 ```PowerShell
 git clone https://github.com/iricigor/EasyAzureFunction.git      # Clone this repository
