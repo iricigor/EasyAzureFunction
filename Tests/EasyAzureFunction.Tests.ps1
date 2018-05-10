@@ -17,12 +17,12 @@ Import-Module (Join-Path $root "$ModuleName.psd1") -Force
 # Display troubleshooting variables
 #
 
-Write-Host "Checking environment details"
-$PSVersionTable | Out-String
-Get-Module | Out-Host # just command outputs nothing, lets try these two
-Get-Module -ListAvailable PowerShellGet,PackageManagement
-Get-PackageProvider
-Get-PackageProvider -ListAvailable
+Write-Host "Checking environment details`n"
+$PSVersionTable | Out-Host
+Get-Module | Out-Host
+Get-Module -ListAvailable PowerShellGet,PackageManagement | Out-Host
+Get-PackageProvider | Out-Host
+Get-PackageProvider -ListAvailable  | Out-Host
 
 #
 # Fake test
