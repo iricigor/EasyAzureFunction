@@ -6,12 +6,11 @@ function Get-Parameter () {
         [Alias('Name')][string[]]$CommandName
 
     )
-    # TODO: Add Verbose output
     
     BEGIN {
         # function begin phase
-        $CommandName = $MyInvocation.MyCommand.Name
-        Write-Verbose -Message "$(Get-Date -f G) $CommandName starting"
+        $FunctionName = $MyInvocation.MyCommand.Name
+        Write-Verbose -Message "$(Get-Date -f G) $FunctionName starting"
 
         $CommonParams = 'Verbose,Debug,ErrorAction,WarningAction,InformationAction,ErrorVariable,WarningVariable,InformationVariable,OutVariable,OutBuffer,PipelineVariable' -split ','
     }
@@ -36,7 +35,7 @@ function Get-Parameter () {
             # process parameters
             if (!($Params.Keys)) {Write-Verbose -Message "$(Get-Date -f T)   found no parameters on $C1" }
             else {Write-Verbose -Message "$(Get-Date -f T)   Parsing list of parameters: $($Params.Keys -join ',')"}
-              
+
             foreach ($P1 in $Params.Keys) {
                 if ($P1 -in $CommonParams) {continue} # TODO: Add switch to include CommonParams
                 $PObj = $Params.$P1
@@ -60,7 +59,7 @@ function Get-Parameter () {
 
     END {
         # function closing phase
-        Write-Verbose -Message "$(Get-Date -f T) $CommandName finished"
+        Write-Verbose -Message "$(Get-Date -f T) $FunctionName finished"
 
     }
 }
