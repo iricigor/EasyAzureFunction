@@ -50,13 +50,18 @@ Describe "Function-Definition" {
 # Check functionality, real tests
 #
 
-$ResultAttributes = @('Mandatory','Command','Name','Type','ParameterSet')
+$ResultAttributes = @('Mandatory','Command','Name','Type','ParameterSet','ValidateSet')
 Describe "Function-Functionality" {
 
     It 'Result should have required properties' {
         $Results = Get-Parameter Get-Parameter
         foreach ($Attr in $ResultAttributes) {
-            $Results.$Attr | Should -Not -BeNullOrEmpty
+            $Attr | Should -BeIn $Results.PSObject.Properties.Name
         }    
+    }
+
+    It 'Get-Command has validate set on CommandType' {
+        $Results = Get-Parameter Get-Command | ? Name -eq CommandType
+        $Results.ValidateSet | Should -Not -BeNullOrEmpty
     }
 }
