@@ -7,8 +7,9 @@ environment:
   matrix:
   - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     PowerShellEdition: Desktop
-  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    PowerShellEdition: Core
+#  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+#    PowerShellEdition: Core
+#    Tests on Core not supported like that
 
 install:
   - cinst pester

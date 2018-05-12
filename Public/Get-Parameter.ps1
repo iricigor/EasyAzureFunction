@@ -1,3 +1,12 @@
+Class EzAzF_ParameterInfo {
+	[ValidateNotNullOrEmpty()][string]$Command
+	[ValidateNotNullOrEmpty()][string]$Name
+    [ValidateNotNullOrEmpty()][string]$Type
+    [ValidateNotNullOrEmpty()][string]$ParameterSet
+	[bool]$Mandatory
+	[string[]]$ValidateSet
+}
+
 function Get-Parameter () {
 
     param (        
@@ -44,7 +53,7 @@ function Get-Parameter () {
                 if ($Type.BaseType -eq [System.Enum]) {$Values = [System.Enum]::GetNames($Type)} else {$Values = $null}
 
                 foreach ($ParamSetName in $PObj.ParameterSets.Keys) {
-                    New-Object PSObject -Property @{
+                    New-Object EzAzF_ParameterInfo -Property @{
                         Command = $C1
                         Name = $P1
                         Type = $PObj.ParameterType.Name

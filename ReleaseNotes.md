@@ -1,5 +1,15 @@
 # Release notes for module EasyAzureFunction
 
+## 0.5
+
+Date: TBA
+
+### New functionality
+
+- Added drop down selector in index.html
+- Added example Set-ExecutionPolicy with drop downs
+- Removed Core tests, due to wrong implementation (though Module works under pwsh.exe)
+
 ## 0.4.0
 
 Date: May 9th, 2018

@@ -58,7 +58,7 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>System.Object</maml:name>
+          <maml:name>EzAzF_ParameterInfo</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
