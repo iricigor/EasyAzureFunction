@@ -1,6 +1,6 @@
 # EasyAzureFunction
 
-[![Build status](https://ci.appveyor.com/api/projects/status/kkjs02jl860sx7ra?svg=true)](https://ci.appveyor.com/project/iricigor/easyazurefunction)
+[![Build status](https://ci.appveyor.com/api/projects/status/kkjs02jl860sx7ra?svg=true&branch=master)](https://ci.appveyor.com/project/iricigor/easyazurefunction)
 [![latest version](https://img.shields.io/powershellgallery/v/EasyAzureFunction.svg?label=latest+version)](https://www.powershellgallery.com/packages/EasyAzureFunction)
 [![downloads](https://img.shields.io/powershellgallery/dt/EasyAzureFunction.svg?label=downloads)](https://www.powershellgallery.com/packages/EasyAzureFunction)
 
