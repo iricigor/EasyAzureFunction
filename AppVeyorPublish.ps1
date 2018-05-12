@@ -18,8 +18,8 @@ if ($LocalVersion -eq $RemoteVersion) {
     exit
 }
 
-# bootstrap Nuget to 2.8.6
-$PSGetProgramDataPath = Join-Path -Path $env:ProgramData -ChildPath 'Microsoft\Windows\PowerShell\PowerShellGet\'
+# bootstrap NuGet to 2.8.6
+$PSGetProgramDataPath = Join-Path -Path $env:ProgramData -ChildPath 'Microsoft\Windows\PowerShell\PowerShellGet\' # TODO: This will fail on non-Windows machine, but I publish only from Windows
 $NuGetExeName = 'NuGet.exe'
 $NuGetExeFilePath = Join-Path $PSGetProgramDataPath $NuGetExeName
 
@@ -27,7 +27,7 @@ if ((-not (Test-Path -Path $NuGetExeFilePath -PathType Leaf)) -and (-not (Test-P
     New-Item -Path $PSGetProgramDataPath -ItemType Directory -Force
 }
 # Download the NuGet.exe from https://nuget.org/NuGet.exe
-Invoke-WebRequest -Uri https://nuget.org/NuGet.exe -OutFile $NugetExeFilePath
+Invoke-WebRequest -Uri https://nuget.org/NuGet.exe -OutFile $NuGetExeFilePath
 
 
 # we proceed with publish

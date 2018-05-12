@@ -2,13 +2,13 @@
 
 ## 0.5
 
-Date: TBA
+Date: May 12th, 2018
 
 ### New functionality
 
-- Added drop down selector in index.html
-- Added example Set-ExecutionPolicy with drop downs
-- Removed Core tests, due to wrong implementation (though Module works under pwsh.exe)
+- Added drop-down selector in index.html
+- Added example Set-ExecutionPolicy with dropdowns
+- Removed Core tests, due to the wrong implementation (though Module works under pwsh.exe)
 
 ## 0.4.0
 
