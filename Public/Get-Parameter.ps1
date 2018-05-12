@@ -21,7 +21,7 @@ function Get-Parameter () {
         $FunctionName = $MyInvocation.MyCommand.Name
         Write-Verbose -Message "$(Get-Date -f G) $FunctionName starting"
 
-        $CommonParams = 'Verbose,Debug,ErrorAction,WarningAction,InformationAction,ErrorVariable,WarningVariable,InformationVariable,OutVariable,OutBuffer,PipelineVariable' -split ','
+        $CommonParams = 'Verbose,Debug,ErrorAction,WarningAction,InformationAction,ErrorVariable,WarningVariable,InformationVariable,OutVariable,OutBuffer,PipelineVariable,WhatIf,Confirm' -split ','
     }
 
     PROCESS {
