@@ -90,6 +90,7 @@ And here are some examples using non-Get functions
 
 - [Write-Output](https://ezazf.azurewebsites.net/api/WO) - try to create 'Hello world!' example
 - [Hello-World](https://ezazf.azurewebsites.net/api/HW) - created with -PreCode parameter, see [Examples/HW](Examples/HW) folder
+- [Set-ExecutionPolicy](https://ezazf.azurewebsites.net/api/SEP) - shows usage od drop downs in html page, also it helps to understand restrictions on Azure Function environment
 
 ### Examples Screenshots
 
