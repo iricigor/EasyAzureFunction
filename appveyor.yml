@@ -13,6 +13,7 @@ environment:
 
 install:
   - cinst pester
+  - cinst nuget.commandline --version 3.5.0 --force
   # - appveyor DownloadFile https://www.nuget.org/NuGet.exe
   # Nuget v.3 forces normalized versioned package name
 
