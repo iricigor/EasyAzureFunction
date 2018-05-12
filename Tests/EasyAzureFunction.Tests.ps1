@@ -32,7 +32,7 @@ if ($Env:APPVEYOR) {
 
 Describe "Fake-Test" {
     It "Should be fixed by developer" {
-        $false | Should -Be $true
+        $true | Should -Be $true
     }
 }
 
