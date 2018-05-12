@@ -107,7 +107,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '- Added drop down selector in index.html
+        - Added example Set-ExecutionPolicy with drop downs
+        - Removed Core tests, due to wrong implementation (though Module works under pwsh.exe)'
 
     } # End of PSData hashtable
 
