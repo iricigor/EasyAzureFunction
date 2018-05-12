@@ -54,7 +54,7 @@ function Convert-ParametersToHTML () {
                     if ($Type -eq 'SwitchParameter') {
                         $Line = "$Line<input type='checkbox' name='$Prefix$Name' value='1'>"  
                     } elseif ($ValidateSet) {
-                        $Line += '<select><option value="">Select:</option>'
+                        $Line += "<select name=$Prefix$Name><option value=`"`">Select:</option>"
                         $ValidateSet | % {$Line += "<option>$_</option>"}
                         $Line += '</select>'
                     } else {
@@ -73,7 +73,7 @@ function Convert-ParametersToHTML () {
                         $Response += "</div>"
                     } elseif ($ValidateSet) {
                         $Response += "<div class='input-group py-2'>","<span class='input-group-addon'>$M$Name</span>"
-                        $Response += '  <select class="form-control">', '    <option value="" style="color: #cccccc;">Select:</option>'
+                        $Response += "  <select name=$Prefix$Name class='form-control'>", '    <option value="" style="color: #cccccc;">Select:</option>'
                         $Response += $ValidateSet | % {"    <option>$_</option>"}
                         $Response += '  </select>','</div>'
                     } else {
