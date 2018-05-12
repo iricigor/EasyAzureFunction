@@ -22,7 +22,7 @@ function Convert-ParametersToHTML () {
             $Response += '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>'
             $Response += '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>'
         }
-        $Response += '<title>EasyAzureFunction - ' + $Command + '- input parameters</title>'
+        $Response += '<title>EasyAzureFunction - ' + $Command + ' - input parameters</title>'
         $Response += '</head>','','<body>'
         if ($Bootstrap) {$Response += '<div class="container">'}
     }
@@ -30,7 +30,7 @@ function Convert-ParametersToHTML () {
     PROCESS {
         foreach ($C1 in $Command) {  # initially, $Command was an array
             Write-Verbose -Message "Processing command $C1"
-            $Params = Get-Parameter $C1 | Sort-Object ParameterSet
+            $Params = Get-Parameter $C1 | Sort-Object ParameterSet,Mandatory,Name
             $ShowSets = ($Params | Select -Unique ParameterSet).Count -gt 1
             $PrevParamSet = ''
             $Response += "<form method='post'>","<h1>$C1</h1>","<hr>"
@@ -38,10 +38,8 @@ function Convert-ParametersToHTML () {
             
             foreach ($P1 in $Params) {
 
-                $Name, $Type, $ParamSet = $P1.Name, $P1.Type, $P1.ParameterSet
+                $Name, $Type, $ParamSet, $ValidateSet = $P1.Name, $P1.Type, $P1.ParameterSet, $P1.ValidateSet
                 $M = if ($P1.Mandatory) {'* '} else {''}
-                # TODO: If validate set, then drop-down
-                # TODO: If Mandatory then bold or something
 
                 if ($ShowSets -and ($ParamSet -ne $PrevParamSet)) {
                     $Response += "<h2>$ParamSet</h2>"
@@ -55,6 +53,10 @@ function Convert-ParametersToHTML () {
                     $Line = "<p>$M$Name`: "
                     if ($Type -eq 'SwitchParameter') {
                         $Line = "$Line<input type='checkbox' name='$Prefix$Name' value='1'>"  
+                    } elseif ($ValidateSet) {
+                        $Line += '<select><option value="">Select:</option>'
+                        $ValidateSet | % {$Line += "<option>$_</option>"}
+                        $Line += '</select>'
                     } else {
                         $Line = "$Line<input type='text' name='$Prefix$Name'>"
                     }
@@ -69,6 +71,11 @@ function Convert-ParametersToHTML () {
                         $Response += "  <input type='checkbox' name=$Prefix$Name value=1>"
                         $Response += "  <label class='form-check-label'>$M$Name</label>"
                         $Response += "</div>"
+                    } elseif ($ValidateSet) {
+                        $Response += "<div class='input-group py-2'>","<span class='input-group-addon'>$M$Name</span>"
+                        $Response += '  <select class="form-control">', '    <option value="" style="color: #cccccc;">Select:</option>'
+                        $Response += $ValidateSet | % {"    <option>$_</option>"}
+                        $Response += '  </select>','</div>'
                     } else {
                         $Response += "<div class='input-group py-2'>"
                         $Response += "  <span class='input-group-addon'>$M$Name</span>"
@@ -80,7 +87,7 @@ function Convert-ParametersToHTML () {
             }
             # Add submit button
             if (!$Bootstrap) {
-                $Response += "<input type='submit' value='Submit!'>","</form>",'<p></p>'
+                $Response += "<input type='submit' value='  Run $C1  '>","</form>",'<p></p>'
                 $Response += '<div>Created with <a href="https://github.com/iricigor/EasyAzureFunction">EasyAzureFunction module</a>'
                 $Response += ' by <a href="mailto:iricigor@gmail.com?Subject=EasyAzureFunction">Igor Iric</a></div>'
             } else {
