@@ -18,6 +18,18 @@ if ($LocalVersion -eq $RemoteVersion) {
     exit
 }
 
+# bootstrap Nuget to 2.8.6
+$PSGetProgramDataPath = Join-Path -Path $env:ProgramData -ChildPath 'Microsoft\Windows\PowerShell\PowerShellGet\'
+$NuGetExeName = 'NuGet.exe'
+$NuGetExeFilePath = Join-Path $PSGetProgramDataPath $NuGetExeName
+
+if ((-not (Test-Path -Path $NuGetExeFilePath -PathType Leaf)) -and (-not (Test-Path -Path $PSGetProgramDataPath))) {
+    New-Item -Path $PSGetProgramDataPath -ItemType Directory -Force
+}
+# Download the NuGet.exe from https://nuget.org/NuGet.exe
+Invoke-WebRequest -Uri https://nuget.org/NuGet.exe -OutFile $NugetExeFilePath
+
+
 # we proceed with publish
 Write-Output "Publishing version $LocalVersion to PSGallery, currently published version is $RemoteVersion"
 try {
