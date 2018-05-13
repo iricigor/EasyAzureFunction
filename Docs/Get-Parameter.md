@@ -28,6 +28,34 @@ PS C:\> Get-Parameter Get-Location
 
 It will return an array with all 5 parameters that commandlet Get-Location has.
 
+### Example 2
+```powershell
+PS C:\> Get-Parameter Get-Command | Format-Table
+```
+
+For majority of commands, it is better to format output as table, if no further processing is done.
+
+### Example 3
+```powershell
+PS C:\> Get-Command *-Host | Get-Parameter | Format-Table
+```
+
+Input for Get-Command can be also via pipeline.
+
+### Example 4
+```powershell
+PS C:\> Get-Command -Module Microsoft.* | Get-Parameter | ? Mandatory | ? ValidateSet | Format-Table
+```
+
+Lists all mandatory parameters with predefined set of values in all loaded Microsoft modules.
+
+### Example 4
+```powershell
+PS C:\> Get-Parameter -ScriptName LoremIpsum.ps1
+```
+
+Lists all parameters for a given script name.
+
 ## PARAMETERS
 
 ### -CommandName

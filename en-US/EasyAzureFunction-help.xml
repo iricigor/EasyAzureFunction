@@ -78,6 +78,34 @@
           <maml:para>It will return an array with all 5 parameters that commandlet Get-Location has.</maml:para>
         </dev:remarks>
       </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-Parameter Get-Command | Format-Table</dev:code>
+        <dev:remarks>
+          <maml:para>For majority of commands, it is better to format output as table, if no further processing is done.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-Command *-Host | Get-Parameter | Format-Table</dev:code>
+        <dev:remarks>
+          <maml:para>Input for Get-Command can be also via pipeline.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-Command -Module Microsoft.* | Get-Parameter | ? Mandatory | ? ValidateSet | Format-Table</dev:code>
+        <dev:remarks>
+          <maml:para>Lists all mandatory parameters with predefined set of values in all loaded Microsoft modules.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-Parameter -ScriptName LoremIpsum.ps1</dev:code>
+        <dev:remarks>
+          <maml:para>Lists all parameters for a given script name.</maml:para>
+        </dev:remarks>
+      </command:example>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
