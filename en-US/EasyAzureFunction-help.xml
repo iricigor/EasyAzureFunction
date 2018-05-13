@@ -15,7 +15,7 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-Parameter</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="Name">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="Name, ScriptName">
           <maml:name>CommandName</maml:name>
           <maml:Description>
             <maml:para>Specify for which command it will output parameters.</maml:para>
@@ -31,7 +31,7 @@
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="Name">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="Name, ScriptName">
         <maml:name>CommandName</maml:name>
         <maml:Description>
           <maml:para>Specify for which command it will output parameters.</maml:para>
@@ -127,7 +127,7 @@
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="Name">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="Name, ScriptName">
           <maml:name>CommandName</maml:name>
           <maml:Description>
             <maml:para>Name of the command for which files will be generated. Ultimately, this value(s) will be passed to Get-Command commandlet.</maml:para>
@@ -180,7 +180,7 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="Name">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="Name, ScriptName">
         <maml:name>CommandName</maml:name>
         <maml:Description>
           <maml:para>Name of the command for which files will be generated. Ultimately, this value(s) will be passed to Get-Command commandlet.</maml:para>

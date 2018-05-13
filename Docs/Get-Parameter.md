@@ -38,7 +38,7 @@ Ultimately, this value(s) will be passed to **Get-Command** commandlet.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: Name
+Aliases: Name, ScriptName
 
 Required: True
 Position: 0

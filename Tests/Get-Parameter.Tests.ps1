@@ -68,7 +68,7 @@ Describe "Function-Functionality" {
     It 'Reads also scripts' {
         $TestScript = Join-Path $here 'LoremIpsum.ps1'
         $TestScript | Should -Exist
-        $Result = Get-Parameter $TestScript 
+        $Result = Get-Parameter -ScriptName $TestScript 
         $Result | Should -Not -BeNullOrEmpty
     }
 }

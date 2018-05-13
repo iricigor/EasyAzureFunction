@@ -12,7 +12,7 @@ function Get-Parameter () {
     param (        
 
         [parameter(Mandatory=$true,ValueFromPipeline=$true,ValueFromPipelineByPropertyName=$true,Position=0)]
-        [Alias('Name')][string[]]$CommandName
+        [Alias('Name','ScriptName')][string[]]$CommandName
 
     )
     
