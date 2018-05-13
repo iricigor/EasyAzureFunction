@@ -30,17 +30,14 @@ function Get-Parameter () {
             if ($CommandName.Count -gt 1) {Write-Verbose -Message "$(Get-Date -f T)   Processing $C1"}
 
             # Obtain list of parameters from script or command
-            if ($C1 -match '\.ps1') {
-                throw "Script support not yet implemented. Expected in version 0.6"
-            } else {
-                try {
-                    $Params = Get-Command -Name $C1 | Select -expand Parameters
-                } catch {
-                    Write-Error "Command $C1 not found."
-                    continue
-                }
+            Write-Verbose -Message "$(Get-Date -f T)   Checking $C1"
+            try {
+                $Params = Get-Command -Name $C1 | Select -expand Parameters
+            } catch {
+                Write-Error "Could not read parameters from $C1"
+                continue
             }
-            
+
             # process parameters
             if (!($Params.Keys)) {Write-Verbose -Message "$(Get-Date -f T)   found no parameters on $C1" }
             else {Write-Verbose -Message "$(Get-Date -f T)   Parsing list of parameters: $($Params.Keys -join ',')"}

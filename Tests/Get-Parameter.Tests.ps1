@@ -64,4 +64,11 @@ Describe "Function-Functionality" {
         $Results = Get-Parameter Get-Command | ? Name -eq CommandType
         $Results.ValidateSet | Should -Not -BeNullOrEmpty
     }
+
+    It 'Reads also scripts' {
+        $TestScript = Join-Path $here 'LoremIpsum.ps1'
+        $TestScript | Should -Exist
+        $Result = Get-Parameter $TestScript 
+        $Result | Should -Not -BeNullOrEmpty
+    }
 }
