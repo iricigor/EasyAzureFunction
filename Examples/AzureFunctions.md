@@ -23,4 +23,4 @@ For this example, set Authorization level to 'Anonymous'.
 
 ## Creating Azure Function Screenshot
 
-![Creating Azure Function Screenshot](../Images/Create_ezAzF.png)
+![Creating Azure Function Screenshot](../Images/Create_EzAzF.png)
