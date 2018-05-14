@@ -54,6 +54,17 @@ Example shows how to use **-PreCode** to execute custom code before running actu
 
 Parameter -PreCode can be also used to install/import third party modules from the Internet.
 
+### Example 4
+
+```powershell
+PS C:\> New-AzureFunctionCode  -ScriptName LoremIpsum.ps1
+```
+
+You can generate a Azure Function also for your custom scripts that have input parameters.
+Do not forget to copy to Azure also that custom script. Runner script will execute it in cloud with selected parameters.
+
+Parameter -PreCode can be also used to install/import third party modules from the Internet.
+
 ## PARAMETERS
 
 ### -Invoke

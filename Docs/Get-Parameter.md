@@ -49,7 +49,7 @@ PS C:\> Get-Command -Module Microsoft.* | Get-Parameter | ? Mandatory | ? Valida
 
 Lists all mandatory parameters with predefined set of values in all loaded Microsoft modules.
 
-### Example 4
+### Example 5
 ```powershell
 PS C:\> Get-Parameter -ScriptName LoremIpsum.ps1
 ```
