@@ -54,6 +54,17 @@ Example shows how to use **-PreCode** to execute custom code before running actu
 
 Parameter -PreCode can be also used to install/import third party modules from the Internet.
 
+### Example 4
+
+```powershell
+PS C:\> New-AzureFunctionCode  -ScriptName LoremIpsum.ps1
+```
+
+You can generate a Azure Function also for your custom scripts that have input parameters.
+Do not forget to copy to Azure also that custom script. Runner script will execute it in cloud with selected parameters.
+
+Parameter -PreCode can be also used to install/import third party modules from the Internet.
+
 ## PARAMETERS
 
 ### -Invoke
@@ -97,10 +108,14 @@ Accept wildcard characters: False
 Name of the command for which files will be generated.
 Ultimately, this value(s) will be passed to Get-Command commandlet.
 
+It can be also specified as script name (ending with .ps1), if that script has input parameters. 
+Commandlet will also copy mentioned script to target folder, next to standard two files index.html and run.ps1.
+You need to copy your custom script (i.e. all three files from folder) to Azure Function folder before running it in cloud.
+
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: Name
+Aliases: Name, ScriptName
 
 Required: True
 Position: Named

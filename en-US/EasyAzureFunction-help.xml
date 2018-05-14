@@ -15,11 +15,12 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-Parameter</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="Name">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="Name, ScriptName">
           <maml:name>CommandName</maml:name>
           <maml:Description>
             <maml:para>Specify for which command it will output parameters.</maml:para>
             <maml:para>Ultimately, this value(s) will be passed to Get-Command commandlet.</maml:para>
+            <maml:para>It can be also specified as script name (ending with .ps1), if that script has input parameters.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
           <dev:type>
@@ -31,11 +32,12 @@
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="Name">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="Name, ScriptName">
         <maml:name>CommandName</maml:name>
         <maml:Description>
           <maml:para>Specify for which command it will output parameters.</maml:para>
           <maml:para>Ultimately, this value(s) will be passed to Get-Command commandlet.</maml:para>
+          <maml:para>It can be also specified as script name (ending with .ps1), if that script has input parameters.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         <dev:type>
@@ -76,6 +78,34 @@
         <dev:code>PS C:\&gt; Get-Parameter Get-Location</dev:code>
         <dev:remarks>
           <maml:para>It will return an array with all 5 parameters that commandlet Get-Location has.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-Parameter Get-Command | Format-Table</dev:code>
+        <dev:remarks>
+          <maml:para>For majority of commands, it is better to format output as table, if no further processing is done.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-Command *-Host | Get-Parameter | Format-Table</dev:code>
+        <dev:remarks>
+          <maml:para>Input for Get-Command can be also via pipeline.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-Command -Module Microsoft.* | Get-Parameter | ? Mandatory | ? ValidateSet | Format-Table</dev:code>
+        <dev:remarks>
+          <maml:para>Lists all mandatory parameters with predefined set of values in all loaded Microsoft modules.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 5 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-Parameter -ScriptName LoremIpsum.ps1</dev:code>
+        <dev:remarks>
+          <maml:para>Lists all parameters for a given script name.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -127,10 +157,11 @@
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="Name">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="Name, ScriptName">
           <maml:name>CommandName</maml:name>
           <maml:Description>
             <maml:para>Name of the command for which files will be generated. Ultimately, this value(s) will be passed to Get-Command commandlet.</maml:para>
+            <maml:para>It can be also specified as script name (ending with .ps1), if that script has input parameters.  Commandlet will also copy mentioned script to target folder, next to standard two files index.html and run.ps1. You need to copy your custom script (i.e. all three files from folder) to Azure Function folder before running it in cloud.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
           <dev:type>
@@ -180,10 +211,11 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="Name">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="Name, ScriptName">
         <maml:name>CommandName</maml:name>
         <maml:Description>
           <maml:para>Name of the command for which files will be generated. Ultimately, this value(s) will be passed to Get-Command commandlet.</maml:para>
+          <maml:para>It can be also specified as script name (ending with .ps1), if that script has input parameters.  Commandlet will also copy mentioned script to target folder, next to standard two files index.html and run.ps1. You need to copy your custom script (i.e. all three files from folder) to Azure Function folder before running it in cloud.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         <dev:type>
@@ -252,6 +284,14 @@
         <dev:code>PS C:\&gt; New-AzureFunctionCode  -CommandName Hello -PreCode 'function Hello([string]$Name="World"){"Hello $Name"}'</dev:code>
         <dev:remarks>
           <maml:para>Example shows how to use -PreCode to execute custom code before running actual command within Azure Function.</maml:para>
+          <maml:para>Parameter -PreCode can be also used to install/import third party modules from the Internet.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; New-AzureFunctionCode  -ScriptName LoremIpsum.ps1</dev:code>
+        <dev:remarks>
+          <maml:para>You can generate a Azure Function also for your custom scripts that have input parameters. Do not forget to copy to Azure also that custom script. Runner script will execute it in cloud with selected parameters.</maml:para>
           <maml:para>Parameter -PreCode can be also used to install/import third party modules from the Internet.</maml:para>
         </dev:remarks>
       </command:example>

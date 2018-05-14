@@ -115,4 +115,17 @@ Describe "Function-Functionality" {
         }
     }
 
+    It 'Generates three files for processed script' {
+        $TestScript = Join-Path $here 'LoremIpsum.ps1'
+        $TestScript | Should -Exist
+
+        $Folder1 = Join-Path $Folder0 'LoremIpsum'
+        if (Test-Path $Folder1) {Remove-Item $Folder1 -Force -Recurse}
+        $Folder1 | Should -Not -Exist
+        
+        New-AzFC -ScriptName $TestScript -Path $Folder1
+        $NewFiles = Get-ChildItem $Folder1 
+        $NewFiles.Count | Should -Be 3
+    }
+
 }
