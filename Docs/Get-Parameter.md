@@ -63,6 +63,8 @@ Specify for which command it will output parameters.
 
 Ultimately, this value(s) will be passed to **Get-Command** commandlet.
 
+It can be also specified as script name (ending with .ps1), if that script has input parameters.
+
 ```yaml
 Type: String[]
 Parameter Sets: (All)

@@ -20,6 +20,7 @@
           <maml:Description>
             <maml:para>Specify for which command it will output parameters.</maml:para>
             <maml:para>Ultimately, this value(s) will be passed to Get-Command commandlet.</maml:para>
+            <maml:para>It can be also specified as script name (ending with .ps1), if that script has input parameters.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
           <dev:type>
@@ -36,6 +37,7 @@
         <maml:Description>
           <maml:para>Specify for which command it will output parameters.</maml:para>
           <maml:para>Ultimately, this value(s) will be passed to Get-Command commandlet.</maml:para>
+          <maml:para>It can be also specified as script name (ending with .ps1), if that script has input parameters.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         <dev:type>
@@ -159,6 +161,7 @@
           <maml:name>CommandName</maml:name>
           <maml:Description>
             <maml:para>Name of the command for which files will be generated. Ultimately, this value(s) will be passed to Get-Command commandlet.</maml:para>
+            <maml:para>It can be also specified as script name (ending with .ps1), if that script has input parameters.  Commandlet will also copy mentioned script to target folder, next to standard two files index.html and run.ps1. You need to copy your custom script (i.e. all three files from folder) to Azure Function folder before running it in cloud.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
           <dev:type>
@@ -212,6 +215,7 @@
         <maml:name>CommandName</maml:name>
         <maml:Description>
           <maml:para>Name of the command for which files will be generated. Ultimately, this value(s) will be passed to Get-Command commandlet.</maml:para>
+          <maml:para>It can be also specified as script name (ending with .ps1), if that script has input parameters.  Commandlet will also copy mentioned script to target folder, next to standard two files index.html and run.ps1. You need to copy your custom script (i.e. all three files from folder) to Azure Function folder before running it in cloud.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         <dev:type>

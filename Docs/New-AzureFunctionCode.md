@@ -108,6 +108,10 @@ Accept wildcard characters: False
 Name of the command for which files will be generated.
 Ultimately, this value(s) will be passed to Get-Command commandlet.
 
+It can be also specified as script name (ending with .ps1), if that script has input parameters. 
+Commandlet will also copy mentioned script to target folder, next to standard two files index.html and run.ps1.
+You need to copy your custom script (i.e. all three files from folder) to Azure Function folder before running it in cloud.
+
 ```yaml
 Type: String[]
 Parameter Sets: (All)
