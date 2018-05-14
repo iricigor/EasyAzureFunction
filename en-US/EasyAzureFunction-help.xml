@@ -100,7 +100,7 @@
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
+        <maml:title>-------------------------- Example 5 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Get-Parameter -ScriptName LoremIpsum.ps1</dev:code>
         <dev:remarks>
           <maml:para>Lists all parameters for a given script name.</maml:para>
@@ -280,6 +280,14 @@
         <dev:code>PS C:\&gt; New-AzureFunctionCode  -CommandName Hello -PreCode 'function Hello([string]$Name="World"){"Hello $Name"}'</dev:code>
         <dev:remarks>
           <maml:para>Example shows how to use -PreCode to execute custom code before running actual command within Azure Function.</maml:para>
+          <maml:para>Parameter -PreCode can be also used to install/import third party modules from the Internet.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; New-AzureFunctionCode  -ScriptName LoremIpsum.ps1</dev:code>
+        <dev:remarks>
+          <maml:para>You can generate a Azure Function also for your custom scripts that have input parameters. Do not forget to copy to Azure also that custom script. Runner script will execute it in cloud with selected parameters.</maml:para>
           <maml:para>Parameter -PreCode can be also used to install/import third party modules from the Internet.</maml:para>
         </dev:remarks>
       </command:example>
