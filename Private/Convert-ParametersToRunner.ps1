@@ -40,8 +40,8 @@ function Convert-ParametersToRunner {
             # FIXME: Above not good because any name gets converted to var
 
             # generate code to open default page
-            $Response += '','# prepare output, either default web-page or invoke command'
-            $Response += "if (!`$$Prefix`InvokeCommand) {","  'show default web page'", '  cd $EXECUTION_CONTEXT_FUNCTIONDIRECTORY', '  $Output = Get-Content .\index.html -Raw'
+            $Response += '','# prepare output, either default web-page or invoke command','cd $EXECUTION_CONTEXT_FUNCTIONDIRECTORY'
+            $Response += "if (!`$$Prefix`InvokeCommand) {","  'show default web page'", '  $Output = Get-Content .\index.html -Raw'
 
             # generate code to prepare parameters splatting
             $Response += '} else {',"  'invoke command'", '  try {'
