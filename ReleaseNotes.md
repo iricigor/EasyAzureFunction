@@ -1,5 +1,15 @@
 # Release notes for module EasyAzureFunction
 
+## 0.6
+
+Date: May 14th, 2018
+
+### New functionality
+
+- You can include also script as input command
+- Added LoremIpsum.ps1 online example
+- Multiple examples added to commandlets help 
+
 ## 0.5
 
 Date: May 12th, 2018

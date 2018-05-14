@@ -12,7 +12,7 @@
 RootModule = '.\EasyAzureFunction.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.5'
+ModuleVersion = '0.6'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -107,9 +107,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '- Added drop down selector in index.html
-        - Added example Set-ExecutionPolicy with drop downs
-        - Removed Core tests, due to wrong implementation (though Module works under pwsh.exe)'
+        ReleaseNotes = 'https://github.com/iricigor/EasyAzureFunction/blob/master/ReleaseNotes.md'
 
     } # End of PSData hashtable
 
