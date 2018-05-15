@@ -9,7 +9,7 @@ environment:
   - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu
 
 install:
-  - cinst pester
+  - ps: Install-Module Pester -Force
 
 build: false
 
