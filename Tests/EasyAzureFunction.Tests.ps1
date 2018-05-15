@@ -19,6 +19,7 @@ Import-Module (Join-Path $root "$ModuleName.psd1") -Force
 
 if ($Env:APPVEYOR) {
     Write-Host "Checking environment details`n"
+    "Operating system: $($Env:OS)" | Out-Host
     $PSVersionTable | Out-Host
     Get-Module | Out-Host
     Get-Module -ListAvailable PowerShellGet,PackageManagement | Out-Host
