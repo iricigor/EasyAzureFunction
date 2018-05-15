@@ -9,7 +9,7 @@ environment:
   - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu
 
 install:
-  - ps: Install-Module Pester -Force
+  - ps: Install-Module Pester -Force -SkipPublisherCheck -Scope CurrentUser
 
 build: false
 
