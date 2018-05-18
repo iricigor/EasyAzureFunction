@@ -4,6 +4,11 @@ if ($Env:APPVEYOR_REPO_COMMIT_MESSAGE -notmatch ', publish!$') {
     exit
 }
 
+if ($env:OS -notmatch 'Windows') {
+    Write-Output 'Publishing possible only from Windows hosts'
+    exit
+}
+
 # check if this version already exists
 $ModuleName = 'EasyAzureFunction'
 
@@ -19,7 +24,8 @@ if ($LocalVersion -eq $RemoteVersion) {
 }
 
 # bootstrap NuGet to 2.8.6
-$PSGetProgramDataPath = Join-Path -Path $env:ProgramData -ChildPath 'Microsoft\Windows\PowerShell\PowerShellGet\' # TODO: This will fail on non-Windows machine, but I publish only from Windows
+$PSGetProgramDataPath = Join-Path -Path $env:ProgramData -ChildPath 'Microsoft\Windows\PowerShell\PowerShellGet\'
+# command above would fail on Linux, but there is test "if Windows" on top of the script; we do not publish from non-Windows machines
 $NuGetExeName = 'NuGet.exe'
 $NuGetExeFilePath = Join-Path $PSGetProgramDataPath $NuGetExeName
 
