@@ -46,12 +46,21 @@ function Convert-ParametersToRunner {
             # generate code to prepare parameters splatting
             $Response += '} else {',"  'invoke command'", '  try {'
             $Response += "    `$ParamsHash = @{}"
+            $Response += "    `$CredentialArray = ''"
             foreach ($P1 in ($Params | Select -Unique Name, Type)) {
                 $N = $P1.Name
                 if ($P1.Type -eq 'SwitchParameter') {
                     $Response += "    if (`$$Prefix$N) {`$ParamsHash.Add('$N',`$True)}"
                 } elseif ($P1.Type -match '\[]$') {
                     $Response += "    if (`$$Prefix$N) {`$ParamsHash.Add('$N',@(`$$Prefix$N -replace '%2C',',' -split ','))}"
+                } elseif ($P1.Type -eq 'PSCredential') {
+                    $Response += "    if (`$$Prefix$N`UserName -and `$$Prefix$N`Password) {"
+                    # idea: generated code will look like: New-PSDrive @ParamsHash -Credential $EzCredential
+                    # runner will generate new variable named like EzCredential containing credential
+                    $Response += "      $Prefix$N`SecPass = ConvertTo-SecureString '`$$Prefix$N`Password' -AsPlainText -Force"
+                    $Response += "      $Prefix$N = New-Object System.Management.Automation.PSCredential ('`$$Prefix$N`UserName', `$$Prefix$N`SecPass)"
+                    # for invoking we will pass this part as string to code
+                    $Response += "      `$CredentialArray += ' -$N `$$Prefix$N'" # append something like ' -Credential $EzCredential'
                 } else {
                     $Response += "    if (`$$Prefix$N) {`$ParamsHash.Add('$N',`$$Prefix$N)}"
                 }                
