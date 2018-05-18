@@ -68,6 +68,5 @@ function Get-Parameter () {
     END {
         # function closing phase
         Write-Verbose -Message "$(Get-Date -f T) $FunctionName finished"
-
     }
 }

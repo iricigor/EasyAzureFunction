@@ -71,4 +71,10 @@ Describe "Function-Functionality" {
         $Result = Get-Parameter -ScriptName $TestScript 
         $Result | Should -Not -BeNullOrEmpty
     }
+
+    It 'Supports Switch IncludeCommonParams' {
+        $Results1 = Get-Parameter Get-Parameter
+        $Results2 = Get-Parameter Get-Parameter -IncludeCommonParameters
+        $Results2.Count | Should -BeGreaterThan $Results1.Count
+    }
 }

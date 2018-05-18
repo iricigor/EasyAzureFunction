@@ -32,7 +32,7 @@
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>IncludeCommonParameters</maml:name>
           <maml:Description>
-            <maml:para>{{Fill IncludeCommonParameters Description}}</maml:para>
+            <maml:para>By default, script will exclude common parameters (like -Verbose, -ErrorAction, etc.) even if they are supported by command. If you want them included, specify this switch.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -60,7 +60,7 @@
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>IncludeCommonParameters</maml:name>
         <maml:Description>
-          <maml:para>{{Fill IncludeCommonParameters Description}}</maml:para>
+          <maml:para>By default, script will exclude common parameters (like -Verbose, -ErrorAction, etc.) even if they are supported by command. If you want them included, specify this switch.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
