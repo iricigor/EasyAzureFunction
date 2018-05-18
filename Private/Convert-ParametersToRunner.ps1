@@ -6,6 +6,7 @@ function Convert-ParametersToRunner {
         
         [string]$Command,
         [string]$PreCode,
+        [string]$PostCode,
         [switch]$Invoke,
         [switch]$Clipboard
 
@@ -66,10 +67,11 @@ function Convert-ParametersToRunner {
                 }                
             }
             # run custom code
-            if ($PreCode) {$Response += "    $PreCode"}
+            if ($PreCode) {$Response += "    $PreCode | OutString"}
             # generate code to invoke command and handle output
             $Response += '    "Params: $($ParamsHash.Keys -join `",`")"' # logging to AzF console
             $Response += "    `$Output = $C1 @ParamsHash | Out-String"
+            if ($PostCode) {$Response += "    $PostCode | OutString"}
             $Response += '    if ($Output) {$Color = ''white''}','    else {$Color = ''gray''; $Output = ''Command run successfully, but it returned no output''}'
             $Response += '  } catch {','    $Output = $_','    $Color = ''red''','  }'
 
