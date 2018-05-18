@@ -12,7 +12,9 @@ function Get-Parameter () {
     param (        
 
         [parameter(Mandatory=$true,ValueFromPipeline=$true,ValueFromPipelineByPropertyName=$true,Position=0)]
-        [Alias('Name','ScriptName')][string[]]$CommandName
+        [Alias('Name','ScriptName')][string[]]$CommandName,
+
+        [switch]$IncludeCommonParameters
 
     )
     
@@ -32,7 +34,7 @@ function Get-Parameter () {
             # Obtain list of parameters from script or command
             Write-Verbose -Message "$(Get-Date -f T)   Checking $C1"
             try {
-                $Params = Get-Command -Name $C1 | Select -expand Parameters
+                $Params = Get-Command -Name $C1 -ea stop | Select -expand Parameters
             } catch {
                 Write-Error "Could not read parameters from $C1"
                 continue
@@ -43,7 +45,7 @@ function Get-Parameter () {
             else {Write-Verbose -Message "$(Get-Date -f T)   Parsing list of parameters: $($Params.Keys -join ',')"}
 
             foreach ($P1 in $Params.Keys) {
-                if ($P1 -in $CommonParams) {continue} # TODO: Add switch to include CommonParams
+                if (($P1 -in $CommonParams) -and (!$IncludeCommonParameters)) {continue}
                 $PObj = $Params.$P1
 
                 $Type = $PObj.ParameterType 
@@ -56,7 +58,7 @@ function Get-Parameter () {
                         Type = $PObj.ParameterType.Name
                         Mandatory = $PObj.Attributes | ? ParameterSetName -eq $ParamSetName | Select -expand Mandatory
                         ParameterSet = $ParamSetName
-                        ValidateSet = $Values
+                        ValidateSet = $Values                        
                     }                    
                 }
             }        
@@ -66,6 +68,5 @@ function Get-Parameter () {
     END {
         # function closing phase
         Write-Verbose -Message "$(Get-Date -f T) $FunctionName finished"
-
     }
 }

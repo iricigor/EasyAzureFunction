@@ -13,7 +13,7 @@ Function lists parameters for a given command
 ## SYNTAX
 
 ```
-Get-Parameter [-CommandName] <String[]> [<CommonParameters>]
+Get-Parameter [-CommandName] <String[]> [-IncludeCommonParameters] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,6 +74,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -IncludeCommonParameters
+By default, script will exclude common parameters (like -Verbose, -ErrorAction, etc.) even if they are supported by command. If you want them included, specify this switch.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
