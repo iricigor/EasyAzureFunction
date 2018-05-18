@@ -54,7 +54,7 @@ $ResultAttributes = @('Mandatory','Command','Name','Type','ParameterSet','Valida
 Describe "Function-Functionality" {
 
     It 'Result should have required properties' {
-        $Results = Get-Parameter Get-Parameter
+        $Results = Get-Parameter Get-Parameter | Select -First 1
         foreach ($Attr in $ResultAttributes) {
             $Attr | Should -BeIn $Results.PSObject.Properties.Name
         }    
