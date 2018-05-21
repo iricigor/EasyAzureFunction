@@ -128,4 +128,21 @@ Describe "Function-Functionality" {
         $NewFiles.Count | Should -Be 3
     }
 
+    It 'Has two fields for Credentials parameter' {
+        $Cmd = 'New-PSDrive'
+        Get-Command -Name $Cmd | Should -Not -Be $null
+        $CredParam = Get-Parameter $Cmd | ? Type -eq PSCredential
+        $CredParam | Should -Not -Be $null
+        $CredParamName = $CredParam.Name
+
+        $Folder1 = Join-Path $Folder0 $Cmd
+        if (Test-Path $Folder1) {Remove-Item $Folder1 -Force -Recurse}
+        $Folder1 | Should -Not -Exist
+
+        New-AzFC -CommandName $Cmd -Path $Folder1
+        $Content = Get-Content (Join-Path $Folder1 'index.html') -Raw
+        $Content | Should -Match "$CredParamName`Username"
+        $Content | Should -Match "$CredParamName`Password"
+    }
+
 }

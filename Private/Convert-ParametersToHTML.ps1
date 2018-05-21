@@ -58,7 +58,8 @@ function Convert-ParametersToHTML () {
                         $ValidateSet | % {$Line += "<option>$_</option>"}
                         $Line += '</select>'
                     } elseif ($Type -eq 'PSCredential') {
-                        # TODO: Add code here
+                        $Line += "<input type='text' name='$Prefix$Name`UserName'>"
+                        $Line += "<input type='password' name='$Prefix$Name`Password'>"
                     } else {
                         $Line = "$Line<input type='text' name='$Prefix$Name'>"
                     }
@@ -75,6 +76,7 @@ function Convert-ParametersToHTML () {
                         $Response += "</div>"
                     } elseif ($Type -eq 'PSCredential') {
                         $Response += "<div class='input-group py-2'>"
+                        # TODO: Currently it lists username and password in two rows, it can be also one; add selector switch for this behavior, issue #36
                         # $Response += "  <span class='input-group-addon'>$M$Name.UserName</span>"
                         $Response += "  <span class='input-group-addon'>$M$Name</span>"
                         $Response += "  <input type='text' class='form-control' name='$Prefix$Name`UserName' placeholder='Enter Username'>"
