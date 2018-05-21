@@ -74,7 +74,7 @@ Describe 'Proper Documentation' {
 		Push-Location -Path $root
         Update-MarkdownHelp -Path .\Docs
         New-ExternalHelp -Path .\Docs -OutputPath .\en-US -Force
-        $diff = git diff .\Docs
+        $diff = git diff .\Docs .\en-US
         Pop-Location
 		$diff | Should -Be $null
 	}
