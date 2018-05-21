@@ -57,6 +57,9 @@ function Convert-ParametersToHTML () {
                         $Line += "<select name=$Prefix$Name><option value=`"`">Select:</option>"
                         $ValidateSet | % {$Line += "<option>$_</option>"}
                         $Line += '</select>'
+                    } elseif ($Type -eq 'PSCredential') {
+                        $Line += "<input type='text' name='$Prefix$Name`UserName'>"
+                        $Line += "<input type='password' name='$Prefix$Name`Password'>"
                     } else {
                         $Line = "$Line<input type='text' name='$Prefix$Name'>"
                     }
@@ -71,8 +74,17 @@ function Convert-ParametersToHTML () {
                         $Response += "  <input type='checkbox' name=$Prefix$Name value=1>"
                         $Response += "  <label class='form-check-label'>$M$Name</label>"
                         $Response += "</div>"
+                    } elseif ($Type -eq 'PSCredential') {
+                        $Response += "<div class='input-group py-2'>"
+                        # TODO: Currently it lists username and password in two rows, it can be also one; add selector switch for this behavior, issue #36
+                        # $Response += "  <span class='input-group-addon'>$M$Name.UserName</span>"
+                        $Response += "  <span class='input-group-addon'>$M$Name</span>"
+                        $Response += "  <input type='text' class='form-control' name='$Prefix$Name`UserName' placeholder='Enter Username'>"
+                        # $Response += "  <span class='input-group-addon'>$M$Name.Password</span>"
+                        $Response += "  <input type='password' class='form-control' name='$Prefix$Name`Password' placeholder='Enter Password'>"
+                        $Response += '</div>'
                     } elseif ($ValidateSet) {
-                        $Response += "<div class='input-group py-2'>","<span class='input-group-addon'>$M$Name</span>"
+                        $Response += "<div class='input-group py-2'>","  <span class='input-group-addon'>$M$Name</span>"
                         $Response += "  <select name=$Prefix$Name class='form-control'>", '    <option value="" style="color: #cccccc;">Select:</option>'
                         $Response += $ValidateSet | % {"    <option>$_</option>"}
                         $Response += '  </select>','</div>'
@@ -83,7 +95,6 @@ function Convert-ParametersToHTML () {
                         $Response += "</div>"
                     }
                 }
-                # TODO: IF PSCredential, then build credential?
             }
             # Add submit button
             if (!$Bootstrap) {

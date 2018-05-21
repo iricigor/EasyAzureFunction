@@ -13,8 +13,8 @@ Function generates two files (index.html and run.ps1) that can be used to run Az
 ## SYNTAX
 
 ```
-New-AzureFunctionCode -CommandName <String[]> [[-Path] <String>] [-PreCode <String>] [-Invoke]
- [<CommonParameters>]
+New-AzureFunctionCode -CommandName <String[]> [[-Path] <String>] [-PreCode <String>] [-PostCode <String>]
+ [-Invoke] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,6 +127,22 @@ Accept wildcard characters: False
 ### -PreCode
 If you want to execute custom PowerShell commands before running your command, specify it as -PreCode.
 This can be for example definition of your custom function, or installing/importing some 3rd party modules.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PostCode
+If you want to execute custom PowerShell commands after running your command, specify it as -PostCode.
+This is similar to -PreCode attribute.
 
 ```yaml
 Type: String
