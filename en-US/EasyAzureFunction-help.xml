@@ -208,7 +208,7 @@
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>PostCode</maml:name>
           <maml:Description>
-            <maml:para>{{Fill PostCode Description}}</maml:para>
+            <maml:para>If you want to execute custom PowerShell commands after running your command, specify it as -PostCode. This is similar to -PreCode attribute.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -274,7 +274,7 @@
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>PostCode</maml:name>
         <maml:Description>
-          <maml:para>{{Fill PostCode Description}}</maml:para>
+          <maml:para>If you want to execute custom PowerShell commands after running your command, specify it as -PostCode. This is similar to -PreCode attribute.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
