@@ -26,7 +26,7 @@ Describe "Fake-Test" {
 $CommandName = 'New-AzureFunctionCode'
 $ParameterNames = @('CommandName','Path','Invoke')
 
-Describe "Function-Definition" {
+Describe "Function-NewAzFC-Definition" {
 
     $CmdDef = Get-Command -Name $CommandName -Module $ModuleName -ea 0
     $CmdFake = Get-Command -Name 'FakeCommandName' -Module $ModuleName -ea 0
@@ -55,7 +55,7 @@ Describe "Function-Definition" {
 # Check functionality, real tests
 #
 
-Describe "Function-Functionality" {
+Describe "Function-NewAzFC-Functionality" {
 
     $Folder0 = [system.io.path]::GetTempPath()
     $Commands = @('Get-Command','Get-Process')
