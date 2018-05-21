@@ -26,7 +26,7 @@ Describe "Fake-Test" {
 $CommandName = 'Get-Parameter'
 $ParameterNames = @('CommandName')
 
-Describe "Function-Definition" {
+Describe "Function-GetParameter-Definition" {
 
     $CmdDef = Get-Command -Name $CommandName -Module $ModuleName -ea 0
     $CmdFake = Get-Command -Name 'FakeCommandName' -Module $ModuleName -ea 0
@@ -51,7 +51,7 @@ Describe "Function-Definition" {
 #
 
 $ResultAttributes = @('Mandatory','Command','Name','Type','ParameterSet','ValidateSet')
-Describe "Function-Functionality" {
+Describe "Function-GetParameter-Functionality" {
 
     It 'Result should have required properties' {
         $Results = Get-Parameter Get-Parameter | Select -First 1
