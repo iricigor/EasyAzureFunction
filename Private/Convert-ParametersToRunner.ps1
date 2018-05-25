@@ -57,11 +57,11 @@ function Convert-ParametersToRunner {
                 } elseif ($P1.Type -eq 'PSCredential') {
                     $Response += "    if (`$$Prefix$N`UserName -and `$$Prefix$N`Password) {"
                     # idea: generated code will look like: New-PSDrive @ParamsHash -Credential $EzCredential
-                    # runner will generate new variable named like EzCredential containing credential
-                    $Response += "      $Prefix$N`SecPass = ConvertTo-SecureString '`$$Prefix$N`Password' -AsPlainText -Force"
-                    $Response += "      $Prefix$N = New-Object System.Management.Automation.PSCredential ('`$$Prefix$N`UserName', `$$Prefix$N`SecPass)"
+                    # runner will generate new variable named like $EzCredential containing credential
+                    $Response += "      `$$Prefix$N`SecPass = ConvertTo-SecureString `$$Prefix$N`Password -AsPlainText -Force"
+                    $Response += "      `$$Prefix$N = New-Object System.Management.Automation.PSCredential (`$$Prefix$N`UserName, `$$Prefix$N`SecPass)"
                     # for invoking we will pass this part as string to code
-                    $Response += "      `$CredentialArray += ' -$N `$$Prefix$N'" # append something like ' -Credential $EzCredential'
+                    $Response += "      `$CredentialArray += ' -$N `$$Prefix$N'}" # append something like ' -Credential $EzCredential'
                 } else {
                     $Response += "    if (`$$Prefix$N) {`$ParamsHash.Add('$N',`$$Prefix$N)}"
                 }                
@@ -70,7 +70,7 @@ function Convert-ParametersToRunner {
             if ($PreCode) {$Response += "    $PreCode | OutString"}
             # generate code to invoke command and handle output
             $Response += '    "Params: $($ParamsHash.Keys -join `",`")"' # logging to AzF console
-            $Response += "    `$Output = $C1 @ParamsHash | Out-String"
+            $Response += "    `$Output = $C1 @ParamsHash -ea Stop | Out-String"
             if ($PostCode) {$Response += "    $PostCode | OutString"}
             $Response += '    if ($Output) {$Color = ''white''}','    else {$Color = ''gray''; $Output = ''Command run successfully, but it returned no output''}'
             $Response += '  } catch {','    $Output = $_','    $Color = ''red''','  }'
