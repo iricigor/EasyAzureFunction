@@ -1,5 +1,22 @@
 # Release notes for module EasyAzureFunction
 
+## 1.0
+
+Date: TBA
+
+### New functionality
+
+- TBA
+
+## 0.7
+
+Date: May 25th, 2018
+
+### New functionality
+
+- PSCredentials objects are rendered as username and password fields, and runner generates the object back
+- Added example for Invoke-Command which uses PSCredential
+
 ## 0.6
 
 Date: May 14th, 2018
@@ -8,7 +25,7 @@ Date: May 14th, 2018
 
 - You can include also script as input command
 - Added LoremIpsum.ps1 online example
-- Multiple examples added to commandlets help 
+- Multiple examples added to commandlets help
 
 ## 0.5
 
