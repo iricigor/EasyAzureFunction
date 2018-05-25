@@ -60,6 +60,13 @@ Under files section (far right), click on Add and create new file named 'index.h
 
 Advanced users can do these actions also via FTP.
 
+### Published commands
+
+Module publishes two new commandlets:
+
+- [New-AzureFunctionCode](Docs/New-AzureFunctionCode.md) (alias New-AzFC) - which generates mentioned files
+- [Get-Parameter](Docs/Get-Parameter.md) - which lists all parameters for a given command or script
+
 ## Examples
 
 Here are some basic examples for built in PowerShell commands. All of these links will open Azure Functions web page, so just click it and see it in action.
