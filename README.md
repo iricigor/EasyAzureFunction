@@ -74,6 +74,7 @@ And here are some examples using non-Get functions
 - [Hello-World](https://ezazf.azurewebsites.net/api/HW) - created with -PreCode parameter, see [Examples/HW](Examples/HW) folder
 - [Set-ExecutionPolicy](https://ezazf.azurewebsites.net/api/SEP) - shows usage od drop downs in html page, also it helps to understand restrictions on Azure Function environment
 - [Lorem-Ipsum.ps1](https://ezazf.azurewebsites.net/api/LI) - this shows that module can be used also with custom script (*.ps1), see additional comments on that [commandlet parameter](Docs/New-AzureFunctionCode.md#-commandname)
+- [Invoke-Command](https://ezazf.azurewebsites.net/api/IC) - this example demonstrate usage of PSCredential objects in input web page.
 
 ### Examples Screenshots
 
