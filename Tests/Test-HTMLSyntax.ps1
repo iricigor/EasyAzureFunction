@@ -7,7 +7,7 @@ function Test-HTMLSyntax {
     )
 
     begin {
-        $uri = $uri = 'https://validator.w3.org/nu/?out=json'
+        $uri = 'https://validator.w3.org/nu/?out=json'
         $H = @{'Content-type'='text/html; charset=utf-8'}
     }
 
