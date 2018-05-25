@@ -54,13 +54,13 @@ if (!$EzInvokeCommand) {
   'invoke command'
   try {
     $ParamsHash = @{}
-    $CredentialArray = ''
     if ($EzSession) {$ParamsHash.Add('Session',@($EzSession -replace '%2C',',' -split ','))}
     if ($EzComputerName) {$ParamsHash.Add('ComputerName',@($EzComputerName -replace '%2C',',' -split ','))}
     if ($EzCredentialUserName -and $EzCredentialPassword) {
       $EzCredentialSecPass = ConvertTo-SecureString $EzCredentialPassword -AsPlainText -Force
       $EzCredential = New-Object System.Management.Automation.PSCredential ($EzCredentialUserName, $EzCredentialSecPass)
-      $CredentialArray += ' -Credential $EzCredential'}
+      $ParamsHash.Add('Credential',$EzCredential)
+    }
     if ($EzPort) {$ParamsHash.Add('Port',$EzPort)}
     if ($EzUseSSL) {$ParamsHash.Add('UseSSL',$True)}
     if ($EzConfigurationName) {$ParamsHash.Add('ConfigurationName',$EzConfigurationName)}
