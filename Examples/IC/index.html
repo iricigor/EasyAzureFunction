@@ -1,0 +1,562 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>EasyAzureFunction - Invoke-Command - input parameters</title>
+</head>
+
+<body>
+<div class="container">
+<form method='post'>
+<h1>Invoke-Command</h1>
+<hr>
+<input type='hidden' name='EzInvokeCommand' value='1'>
+<h2>__AllParameterSets</h2>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ArgumentList</span>
+  <input type='text' class='form-control' name='EzArgumentList' placeholder='Object[]'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>InputObject</span>
+  <input type='text' class='form-control' name='EzInputObject' placeholder='PSObject'>
+</div>
+<h2>ComputerName</h2>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ApplicationName</span>
+  <input type='text' class='form-control' name='EzApplicationName' placeholder='String'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzAsJob value=1>
+  <label class='form-check-label'>AsJob</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>Authentication</span>
+  <select name=EzAuthentication class='form-control'>
+    <option value="" style="color: #cccccc;">Select:</option>
+    <option>Default</option>
+    <option>Basic</option>
+    <option>Negotiate</option>
+    <option>NegotiateWithImplicitCredential</option>
+    <option>Credssp</option>
+    <option>Digest</option>
+    <option>Kerberos</option>
+  </select>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>CertificateThumbprint</span>
+  <input type='text' class='form-control' name='EzCertificateThumbprint' placeholder='String'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ComputerName</span>
+  <input type='text' class='form-control' name='EzComputerName' placeholder='String[]'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ConfigurationName</span>
+  <input type='text' class='form-control' name='EzConfigurationName' placeholder='String'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>Credential</span>
+  <input type='text' class='form-control' name='EzCredentialUserName' placeholder='Enter Username'>
+  <input type='password' class='form-control' name='EzCredentialPassword' placeholder='Enter Password'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzEnableNetworkAccess value=1>
+  <label class='form-check-label'>EnableNetworkAccess</label>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzHideComputerName value=1>
+  <label class='form-check-label'>HideComputerName</label>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzInDisconnectedSession value=1>
+  <label class='form-check-label'>InDisconnectedSession</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>JobName</span>
+  <input type='text' class='form-control' name='EzJobName' placeholder='String'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>Port</span>
+  <input type='text' class='form-control' name='EzPort' placeholder='Int32'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>SessionName</span>
+  <input type='text' class='form-control' name='EzSessionName' placeholder='String[]'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>SessionOption</span>
+  <input type='text' class='form-control' name='EzSessionOption' placeholder='PSSessionOption'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ThrottleLimit</span>
+  <input type='text' class='form-control' name='EzThrottleLimit' placeholder='Int32'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzUseSSL value=1>
+  <label class='form-check-label'>UseSSL</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* ScriptBlock</span>
+  <input type='text' class='form-control' name='EzScriptBlock' placeholder='ScriptBlock'>
+</div>
+<h2>ContainerId</h2>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzAsJob value=1>
+  <label class='form-check-label'>AsJob</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ConfigurationName</span>
+  <input type='text' class='form-control' name='EzConfigurationName' placeholder='String'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzHideComputerName value=1>
+  <label class='form-check-label'>HideComputerName</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>JobName</span>
+  <input type='text' class='form-control' name='EzJobName' placeholder='String'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzRunAsAdministrator value=1>
+  <label class='form-check-label'>RunAsAdministrator</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ThrottleLimit</span>
+  <input type='text' class='form-control' name='EzThrottleLimit' placeholder='Int32'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* ContainerId</span>
+  <input type='text' class='form-control' name='EzContainerId' placeholder='String[]'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* ScriptBlock</span>
+  <input type='text' class='form-control' name='EzScriptBlock' placeholder='ScriptBlock'>
+</div>
+<h2>FilePathComputerName</h2>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ApplicationName</span>
+  <input type='text' class='form-control' name='EzApplicationName' placeholder='String'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzAsJob value=1>
+  <label class='form-check-label'>AsJob</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>Authentication</span>
+  <select name=EzAuthentication class='form-control'>
+    <option value="" style="color: #cccccc;">Select:</option>
+    <option>Default</option>
+    <option>Basic</option>
+    <option>Negotiate</option>
+    <option>NegotiateWithImplicitCredential</option>
+    <option>Credssp</option>
+    <option>Digest</option>
+    <option>Kerberos</option>
+  </select>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ComputerName</span>
+  <input type='text' class='form-control' name='EzComputerName' placeholder='String[]'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ConfigurationName</span>
+  <input type='text' class='form-control' name='EzConfigurationName' placeholder='String'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>Credential</span>
+  <input type='text' class='form-control' name='EzCredentialUserName' placeholder='Enter Username'>
+  <input type='password' class='form-control' name='EzCredentialPassword' placeholder='Enter Password'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzEnableNetworkAccess value=1>
+  <label class='form-check-label'>EnableNetworkAccess</label>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzHideComputerName value=1>
+  <label class='form-check-label'>HideComputerName</label>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzInDisconnectedSession value=1>
+  <label class='form-check-label'>InDisconnectedSession</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>JobName</span>
+  <input type='text' class='form-control' name='EzJobName' placeholder='String'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>Port</span>
+  <input type='text' class='form-control' name='EzPort' placeholder='Int32'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>SessionName</span>
+  <input type='text' class='form-control' name='EzSessionName' placeholder='String[]'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>SessionOption</span>
+  <input type='text' class='form-control' name='EzSessionOption' placeholder='PSSessionOption'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ThrottleLimit</span>
+  <input type='text' class='form-control' name='EzThrottleLimit' placeholder='Int32'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzUseSSL value=1>
+  <label class='form-check-label'>UseSSL</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* FilePath</span>
+  <input type='text' class='form-control' name='EzFilePath' placeholder='String'>
+</div>
+<h2>FilePathContainerId</h2>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzAsJob value=1>
+  <label class='form-check-label'>AsJob</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ConfigurationName</span>
+  <input type='text' class='form-control' name='EzConfigurationName' placeholder='String'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzHideComputerName value=1>
+  <label class='form-check-label'>HideComputerName</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>JobName</span>
+  <input type='text' class='form-control' name='EzJobName' placeholder='String'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzRunAsAdministrator value=1>
+  <label class='form-check-label'>RunAsAdministrator</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ThrottleLimit</span>
+  <input type='text' class='form-control' name='EzThrottleLimit' placeholder='Int32'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* ContainerId</span>
+  <input type='text' class='form-control' name='EzContainerId' placeholder='String[]'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* FilePath</span>
+  <input type='text' class='form-control' name='EzFilePath' placeholder='String'>
+</div>
+<h2>FilePathRunspace</h2>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzAsJob value=1>
+  <label class='form-check-label'>AsJob</label>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzHideComputerName value=1>
+  <label class='form-check-label'>HideComputerName</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>JobName</span>
+  <input type='text' class='form-control' name='EzJobName' placeholder='String'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>Session</span>
+  <input type='text' class='form-control' name='EzSession' placeholder='PSSession[]'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ThrottleLimit</span>
+  <input type='text' class='form-control' name='EzThrottleLimit' placeholder='Int32'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* FilePath</span>
+  <input type='text' class='form-control' name='EzFilePath' placeholder='String'>
+</div>
+<h2>FilePathUri</h2>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzAllowRedirection value=1>
+  <label class='form-check-label'>AllowRedirection</label>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzAsJob value=1>
+  <label class='form-check-label'>AsJob</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>Authentication</span>
+  <select name=EzAuthentication class='form-control'>
+    <option value="" style="color: #cccccc;">Select:</option>
+    <option>Default</option>
+    <option>Basic</option>
+    <option>Negotiate</option>
+    <option>NegotiateWithImplicitCredential</option>
+    <option>Credssp</option>
+    <option>Digest</option>
+    <option>Kerberos</option>
+  </select>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ConfigurationName</span>
+  <input type='text' class='form-control' name='EzConfigurationName' placeholder='String'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ConnectionUri</span>
+  <input type='text' class='form-control' name='EzConnectionUri' placeholder='Uri[]'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>Credential</span>
+  <input type='text' class='form-control' name='EzCredentialUserName' placeholder='Enter Username'>
+  <input type='password' class='form-control' name='EzCredentialPassword' placeholder='Enter Password'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzEnableNetworkAccess value=1>
+  <label class='form-check-label'>EnableNetworkAccess</label>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzHideComputerName value=1>
+  <label class='form-check-label'>HideComputerName</label>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzInDisconnectedSession value=1>
+  <label class='form-check-label'>InDisconnectedSession</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>JobName</span>
+  <input type='text' class='form-control' name='EzJobName' placeholder='String'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>SessionOption</span>
+  <input type='text' class='form-control' name='EzSessionOption' placeholder='PSSessionOption'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ThrottleLimit</span>
+  <input type='text' class='form-control' name='EzThrottleLimit' placeholder='Int32'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* FilePath</span>
+  <input type='text' class='form-control' name='EzFilePath' placeholder='String'>
+</div>
+<h2>FilePathVMId</h2>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzAsJob value=1>
+  <label class='form-check-label'>AsJob</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ConfigurationName</span>
+  <input type='text' class='form-control' name='EzConfigurationName' placeholder='String'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzHideComputerName value=1>
+  <label class='form-check-label'>HideComputerName</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ThrottleLimit</span>
+  <input type='text' class='form-control' name='EzThrottleLimit' placeholder='Int32'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* Credential</span>
+  <input type='text' class='form-control' name='EzCredentialUserName' placeholder='Enter Username'>
+  <input type='password' class='form-control' name='EzCredentialPassword' placeholder='Enter Password'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* FilePath</span>
+  <input type='text' class='form-control' name='EzFilePath' placeholder='String'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* VMId</span>
+  <input type='text' class='form-control' name='EzVMId' placeholder='Guid[]'>
+</div>
+<h2>FilePathVMName</h2>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzAsJob value=1>
+  <label class='form-check-label'>AsJob</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ConfigurationName</span>
+  <input type='text' class='form-control' name='EzConfigurationName' placeholder='String'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzHideComputerName value=1>
+  <label class='form-check-label'>HideComputerName</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ThrottleLimit</span>
+  <input type='text' class='form-control' name='EzThrottleLimit' placeholder='Int32'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* Credential</span>
+  <input type='text' class='form-control' name='EzCredentialUserName' placeholder='Enter Username'>
+  <input type='password' class='form-control' name='EzCredentialPassword' placeholder='Enter Password'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* FilePath</span>
+  <input type='text' class='form-control' name='EzFilePath' placeholder='String'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* VMName</span>
+  <input type='text' class='form-control' name='EzVMName' placeholder='String[]'>
+</div>
+<h2>InProcess</h2>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzNoNewScope value=1>
+  <label class='form-check-label'>NoNewScope</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* ScriptBlock</span>
+  <input type='text' class='form-control' name='EzScriptBlock' placeholder='ScriptBlock'>
+</div>
+<h2>Session</h2>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzAsJob value=1>
+  <label class='form-check-label'>AsJob</label>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzHideComputerName value=1>
+  <label class='form-check-label'>HideComputerName</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>JobName</span>
+  <input type='text' class='form-control' name='EzJobName' placeholder='String'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>Session</span>
+  <input type='text' class='form-control' name='EzSession' placeholder='PSSession[]'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ThrottleLimit</span>
+  <input type='text' class='form-control' name='EzThrottleLimit' placeholder='Int32'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* ScriptBlock</span>
+  <input type='text' class='form-control' name='EzScriptBlock' placeholder='ScriptBlock'>
+</div>
+<h2>Uri</h2>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzAllowRedirection value=1>
+  <label class='form-check-label'>AllowRedirection</label>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzAsJob value=1>
+  <label class='form-check-label'>AsJob</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>Authentication</span>
+  <select name=EzAuthentication class='form-control'>
+    <option value="" style="color: #cccccc;">Select:</option>
+    <option>Default</option>
+    <option>Basic</option>
+    <option>Negotiate</option>
+    <option>NegotiateWithImplicitCredential</option>
+    <option>Credssp</option>
+    <option>Digest</option>
+    <option>Kerberos</option>
+  </select>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>CertificateThumbprint</span>
+  <input type='text' class='form-control' name='EzCertificateThumbprint' placeholder='String'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ConfigurationName</span>
+  <input type='text' class='form-control' name='EzConfigurationName' placeholder='String'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ConnectionUri</span>
+  <input type='text' class='form-control' name='EzConnectionUri' placeholder='Uri[]'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>Credential</span>
+  <input type='text' class='form-control' name='EzCredentialUserName' placeholder='Enter Username'>
+  <input type='password' class='form-control' name='EzCredentialPassword' placeholder='Enter Password'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzEnableNetworkAccess value=1>
+  <label class='form-check-label'>EnableNetworkAccess</label>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzHideComputerName value=1>
+  <label class='form-check-label'>HideComputerName</label>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzInDisconnectedSession value=1>
+  <label class='form-check-label'>InDisconnectedSession</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>JobName</span>
+  <input type='text' class='form-control' name='EzJobName' placeholder='String'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>SessionOption</span>
+  <input type='text' class='form-control' name='EzSessionOption' placeholder='PSSessionOption'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ThrottleLimit</span>
+  <input type='text' class='form-control' name='EzThrottleLimit' placeholder='Int32'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* ScriptBlock</span>
+  <input type='text' class='form-control' name='EzScriptBlock' placeholder='ScriptBlock'>
+</div>
+<h2>VMId</h2>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzAsJob value=1>
+  <label class='form-check-label'>AsJob</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ConfigurationName</span>
+  <input type='text' class='form-control' name='EzConfigurationName' placeholder='String'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzHideComputerName value=1>
+  <label class='form-check-label'>HideComputerName</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ThrottleLimit</span>
+  <input type='text' class='form-control' name='EzThrottleLimit' placeholder='Int32'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* Credential</span>
+  <input type='text' class='form-control' name='EzCredentialUserName' placeholder='Enter Username'>
+  <input type='password' class='form-control' name='EzCredentialPassword' placeholder='Enter Password'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* ScriptBlock</span>
+  <input type='text' class='form-control' name='EzScriptBlock' placeholder='ScriptBlock'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* VMId</span>
+  <input type='text' class='form-control' name='EzVMId' placeholder='Guid[]'>
+</div>
+<h2>VMName</h2>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzAsJob value=1>
+  <label class='form-check-label'>AsJob</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ConfigurationName</span>
+  <input type='text' class='form-control' name='EzConfigurationName' placeholder='String'>
+</div>
+<div class='form-check py-2'>
+  <input type='checkbox' name=EzHideComputerName value=1>
+  <label class='form-check-label'>HideComputerName</label>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>ThrottleLimit</span>
+  <input type='text' class='form-control' name='EzThrottleLimit' placeholder='Int32'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* Credential</span>
+  <input type='text' class='form-control' name='EzCredentialUserName' placeholder='Enter Username'>
+  <input type='password' class='form-control' name='EzCredentialPassword' placeholder='Enter Password'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* ScriptBlock</span>
+  <input type='text' class='form-control' name='EzScriptBlock' placeholder='ScriptBlock'>
+</div>
+<div class='input-group py-2'>
+  <span class='input-group-addon'>* VMName</span>
+  <input type='text' class='form-control' name='EzVMName' placeholder='String[]'>
+</div>
+<p></p><input type=submit value='  Run Invoke-Command  ' class='btn btn-primary btn-block py-3'>
+</form>
+<p></p>
+<div class="bg-info">Created with EasyAzureFunction module <a href="https://github.com/iricigor/EasyAzureFunction"><span class="glyphicon glyphicon-link"></span></a>
+ by Igor Iric <a href="mailto:iricigor@gmail.com?Subject=EasyAzureFunction"><span class="glyphicon glyphicon-envelope"></span></a></div>
+</div>
+</body>
+</html>
