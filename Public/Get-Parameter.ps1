@@ -1,6 +1,6 @@
 function Get-Parameter () {
 
-    param (        
+    param (
 
         [parameter(Mandatory=$true,ValueFromPipeline=$true,ValueFromPipelineByPropertyName=$true,Position=0)]
         [Alias('Name','ScriptName')][string[]]$CommandName,
@@ -8,7 +8,7 @@ function Get-Parameter () {
         [switch]$IncludeCommonParameters
 
     )
-    
+
     BEGIN {
         # function begin phase
         $FunctionName = $MyInvocation.MyCommand.Name
@@ -39,7 +39,7 @@ function Get-Parameter () {
                 if (($P1 -in $CommonParams) -and (!$IncludeCommonParameters)) {continue}
                 $PObj = $Params.$P1
 
-                $Type = $PObj.ParameterType 
+                $Type = $PObj.ParameterType
                 if ($Type.BaseType -eq [System.Enum]) {$Values = [System.Enum]::GetNames($Type)} else {$Values = $null}
 
                 foreach ($ParamSetName in $PObj.ParameterSets.Keys) {
@@ -49,10 +49,10 @@ function Get-Parameter () {
                         Type = $PObj.ParameterType.Name
                         Mandatory = $PObj.Attributes | ? ParameterSetName -eq $ParamSetName | Select -expand Mandatory
                         ParameterSet = $ParamSetName
-                        ValidateSet = $Values                        
-                    }                    
+                        ValidateSet = $Values
+                    }
                 }
-            }        
+            }
         }
     }
 

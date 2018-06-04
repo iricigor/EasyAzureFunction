@@ -13,7 +13,7 @@ function Test-HTMLSyntax {
 
     process {
         foreach ($scriptPath in $Path) {
-            
+
             $contents = Get-Content -Path $scriptPath
             if ($null -eq $contents) {continue}
 

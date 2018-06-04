@@ -1,9 +1,9 @@
 function Convert-ParametersToRunner {
-    
+
     # Used to generate run.ps1 file which is executed in Azure Function
 
     param (
-        
+
         [string]$Command,
         [string]$PreCode,
         [string]$PostCode,
@@ -24,7 +24,7 @@ function Convert-ParametersToRunner {
         foreach ($C1 in $Command) { # Initially $Command was an array
 
             Write-Verbose -Message "Processing command $C1"
-            $Params = Get-Parameter $C1 
+            $Params = Get-Parameter $C1
 
             # generate code to read parameters
             $Response += '', '# POST method: $req', '$requestContent = Get-Content $req -Raw'
@@ -61,7 +61,7 @@ function Convert-ParametersToRunner {
                     $Response += "      `$ParamsHash.Add('$N',`$$Prefix$N)",'    }'
                 } else {
                     $Response += "    if (`$$Prefix$N) {`$ParamsHash.Add('$N',`$$Prefix$N)}"
-                }                
+                }
             }
             # run custom code
             if ($PreCode) {$Response += "    $PreCode | OutString"}
@@ -76,7 +76,7 @@ function Convert-ParametersToRunner {
             $Response += '  $Back = ''<p><a href="javascript:history.back()" style="color:yellow;">Go Back</a></p>'''
             $Response += "  `$Output = `$Head + '<pre>' + `$Output + `$Back + '</pre>'"
             $Response += "  `$Output = `$Output -replace `"``n`",'</br>'",'}'
-                        
+
             # convert output to HTML and parse it back
             $Response += '', '# parse and send back output'
             $Response += "`$Output2 = [PSCustomObject]@{Status = 200; Body = '';  Headers = @{}}","`$Output2.Headers.Add('content-type','text/html')"

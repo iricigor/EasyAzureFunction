@@ -14,7 +14,7 @@ $Private = @(Get-ChildItem (Join-Path $PSScriptRoot 'Private') -Filter *.ps1 -Er
 foreach ($F in ($Private+$Public) ) {
 
     Write-Host ("Importing $($F.Name)... ") -NoNewline
-    
+
     try {
         . ($F.FullName)
         Write-Host '  OK  ' -ForegroundColor Green

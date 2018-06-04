@@ -1,6 +1,6 @@
 #
 # This is a PowerShell Unit Test file.
-# You need a unit test framework such as Pester to run PowerShell Unit tests. 
+# You need a unit test framework such as Pester to run PowerShell Unit tests.
 # You can download Pester from http://go.microsoft.com/fwlink/?LinkID=534084
 #
 
@@ -23,7 +23,7 @@ if ($Env:APPVEYOR) {
     Get-Module | Out-Host
     Get-Module -ListAvailable PowerShellGet,PackageManagement | Out-Host
     Get-PackageProvider | Out-Host
-    Get-PackageProvider -ListAvailable  | Out-Host    
+    Get-PackageProvider -ListAvailable  | Out-Host
 }
 
 #
@@ -43,7 +43,7 @@ Describe "Fake-Test" {
 
 
 Describe 'Proper Declarations' {
-    
+
     It 'Checks for existence of functions' {
         @(Get-Command -Module $ModuleName -CommandType Function).Count | Should -Be 2 -Because 'We should have two functions defined'
         Get-Command Get-Parameter -ea 0 | Should -Not -Be $Null
@@ -70,7 +70,7 @@ Describe 'Proper Documentation' {
         # Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
         if (!(Get-Module platyPS -List -ea 0)) {Install-Module platyPS -Force -Scope CurrentUser}
 		Import-Module platyPS
-		# update documentation 
+		# update documentation
 		Push-Location -Path $root
         Update-MarkdownHelp -Path .\Docs
         New-ExternalHelp -Path .\Docs -OutputPath .\en-US -Force

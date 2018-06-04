@@ -1,10 +1,10 @@
 function New-AzureFunctionCode {
 
     # function creates two files: run.ps1 and index.html for specified command
-    # files can be just uploaded to azure function and executed to simulate server-less command running 
+    # files can be just uploaded to azure function and executed to simulate server-less command running
 
     param (
-        
+
         [parameter(Mandatory=$true,ValueFromPipeline=$true,ValueFromPipelineByPropertyName=$true,Position=0)]
         [Alias('Name','ScriptName')][string[]]$CommandName,
 
@@ -25,9 +25,9 @@ function New-AzureFunctionCode {
 
     PROCESS {
         foreach ($C1 in $CommandName) {
-            
+
             # prepare output folder
-            if ($CommandName.Count -gt 1) {$P1 = Join-Path $Path $C1} 
+            if ($CommandName.Count -gt 1) {$P1 = Join-Path $Path $C1}
             else {$P1 = $Path}
             if (!(Test-Path $P1)) {New-Item $P1 -ItemType Directory -Force | Out-Null}
 

@@ -79,7 +79,7 @@ Describe "Function-NewAzFC-Functionality" {
 
     It 'Command subfolders should not exist before running command' {
         foreach ($C1 in $Commands) {
-            $Folder1 = Join-Path  $Folder0 $C1 
+            $Folder1 = Join-Path  $Folder0 $C1
             if (Test-Path $Folder1) {Remove-Item $Folder1 -Force -Recurse}
             $Folder1 | Should -Not -Exist
         }
@@ -122,9 +122,9 @@ Describe "Function-NewAzFC-Functionality" {
         $Folder1 = Join-Path $Folder0 'LoremIpsum'
         if (Test-Path $Folder1) {Remove-Item $Folder1 -Force -Recurse}
         $Folder1 | Should -Not -Exist
-        
+
         New-AzFC -ScriptName $TestScript -Path $Folder1
-        $NewFiles = Get-ChildItem $Folder1 
+        $NewFiles = Get-ChildItem $Folder1
         $NewFiles.Count | Should -Be 3
     }
 

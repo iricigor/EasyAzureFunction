@@ -57,7 +57,7 @@ Describe "Function-GetParameter-Functionality" {
         $Results = Get-Parameter Get-Parameter | Select -First 1
         foreach ($Attr in $ResultAttributes) {
             $Attr | Should -BeIn $Results.PSObject.Properties.Name
-        }    
+        }
     }
 
     It 'Get-Command has validate set on CommandType' {
@@ -68,7 +68,7 @@ Describe "Function-GetParameter-Functionality" {
     It 'Reads also scripts' {
         $TestScript = Join-Path $here 'LoremIpsum.ps1'
         $TestScript | Should -Exist
-        $Result = Get-Parameter -ScriptName $TestScript 
+        $Result = Get-Parameter -ScriptName $TestScript
         $Result | Should -Not -BeNullOrEmpty
     }
 

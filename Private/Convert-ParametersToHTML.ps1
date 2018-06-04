@@ -1,14 +1,14 @@
 function Convert-ParametersToHTML () {
-    
+
     # Used to generate index.html file which is presented if Azure Function is called without default parameter
 
     # Example: Get-Parameters Get-Location | Convert-ParametersToHTML -Boot -Invoke
-    
+
     param (
-        
+
         [string]$Command,            # command(s) which will be analyzed
         [switch]$Invoke,             # should we invoke (open) output folder, works only on Windows
-        [switch]$Bootstrap,          # should we use standardHTML or bootstrapped 
+        [switch]$Bootstrap,          # should we use standardHTML or bootstrapped
         [switch]$Clipboard,          # if selected, output is copied to clipboard, !! compatible only with v.5.1
         [string]$MandatoryMark = '*' # how to additionally label mandatory parameter
 
@@ -36,7 +36,7 @@ function Convert-ParametersToHTML () {
             $PrevParamSet = ''
             $Response += "<form method='post'>","<h1>$C1</h1>","<hr>"
             $Response += "<input type='hidden' name='$Prefix`InvokeCommand' value='1'>"
-            
+
             foreach ($P1 in $Params) {
 
                 $Name, $Type, $ParamSet, $ValidateSet = $P1.Name, $P1.Type, $P1.ParameterSet, $P1.ValidateSet
@@ -53,7 +53,7 @@ function Convert-ParametersToHTML () {
 
                     $Line = "<p>$M$Name`: "
                     if ($Type -eq 'SwitchParameter') {
-                        $Line = "$Line<input type='checkbox' name='$Prefix$Name' value='1'>"  
+                        $Line = "$Line<input type='checkbox' name='$Prefix$Name' value='1'>"
                     } elseif ($ValidateSet) {
                         $Line += "<select name=$Prefix$Name><option value=`"`">Select:</option>"
                         $ValidateSet | % {$Line += "<option>$_</option>"}
@@ -68,8 +68,8 @@ function Convert-ParametersToHTML () {
                     $Response += $Line
                 } else {
 
-                    # Bootstrap template 
-                    
+                    # Bootstrap template
+
                     if ($Type -eq 'SwitchParameter') {
                         $Response += "<div class='form-check py-2'>"
                         $Response += "  <input type='checkbox' name=$Prefix$Name value=1>"
@@ -106,7 +106,7 @@ function Convert-ParametersToHTML () {
                 $Response += "<p></p><input type=submit value='  Run $C1  ' class='btn btn-primary btn-block py-3'>","</form>",'<p></p>'
                 $Response += '<div class="bg-info">Created with EasyAzureFunction module <a href="https://github.com/iricigor/EasyAzureFunction"><span class="glyphicon glyphicon-link"></span></a>'
                 $Response += ' by Igor Iric <a href="mailto:iricigor@gmail.com?Subject=EasyAzureFunction"><span class="glyphicon glyphicon-envelope"></span></a></div>'
-            }            
+            }
         }
     }
 
