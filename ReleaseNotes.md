@@ -8,6 +8,14 @@ Date: TBA
 
 - TBA
 
+## 0.7.1
+
+Date: June 4th, 2018
+
+### New functionality
+
+- Minor code cleanup as suggested by PSScriptAnalyzer
+
 ## 0.7
 
 Date: May 25th, 2018
