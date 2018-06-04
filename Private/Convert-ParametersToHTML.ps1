@@ -6,10 +6,11 @@ function Convert-ParametersToHTML () {
     
     param (
         
-        [string]$Command,
-        [switch]$Invoke,
-        [switch]$Bootstrap,
-        [switch]$Clipboard
+        [string]$Command,            # command(s) which will be analyzed
+        [switch]$Invoke,             # should we invoke (open) output folder, works only on Windows
+        [switch]$Bootstrap,          # should we use standardHTML or bootstrapped 
+        [switch]$Clipboard,          # if selected, output is copied to clipboard, !! compatible only with v.5.1
+        [string]$MandatoryMark = '*' # how to additionally label mandatory parameter
 
     )
 
@@ -39,7 +40,7 @@ function Convert-ParametersToHTML () {
             foreach ($P1 in $Params) {
 
                 $Name, $Type, $ParamSet, $ValidateSet = $P1.Name, $P1.Type, $P1.ParameterSet, $P1.ValidateSet
-                $M = if ($P1.Mandatory) {'* '} else {''}
+                $M = if ($P1.Mandatory) {$MandatoryMark} else {''}
 
                 if ($ShowSets -and ($ParamSet -ne $PrevParamSet)) {
                     $Response += "<h2>$ParamSet</h2>"
